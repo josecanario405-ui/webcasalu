@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Luna - Experiencias</title>
+  <link rel="stylesheet" href="/webcasaluna/style.css">
+  <style>
+ /* Reset y estructura base */
+/* Reset y estructura base */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: system-ui, sans-serif;
+  color: #222;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Estilo general del header para todas las páginas */
+header {
+  position: relative;
+  height: 40vh;
+  min-height: 250px;
+  background: url('/webcasaluna/img/portada.jpg') center center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+	  header {
+  flex-shrink: 0;
+}
+
+
+/* Contenido centrado en la portada */
+.hero-contenido {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-contenido h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.hero-contenido p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Menú de navegación */
+nav {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px;
+  z-index: 3;
+}
+
+.logo-link {
+  position: absolute;
+  left: 20px;
+  background: rgba(255,255,255,0.7);
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.logo-img {
+  height: 150px;
+}
+
+.menu-toggle {
+  display: none;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  font-size: 1.8rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 4;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #4CAF50;
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #4CAF50;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* Página de Experiencias usa la misma imagen que el resto */
+.pagina-experiencias header {
+  /* No se necesita nada aquí si usa portada.jpg como todas */
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .logo-img {
+    height: 100px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    border-radius: 8px;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hero-contenido {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .hero-contenido h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-contenido p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo-img {
+    height: 80px;
+  }
+
+  .hero-contenido h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-contenido p {
+    font-size: 0.95rem;
+  }
+}
+/* Estilos del contenido principal */
+main {
+  padding: 40px 20px;
+  background: #f9f9f9;
+  display: block;
+}
+
+
+
+.experiencia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.experiencia-bloque {
+  background: #f1f8e9;
+  border-left: 4px solid #4CAF50;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.experiencia-bloque:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.experiencia-bloque h2 {
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+	  .experiencia-cuadro {
+  display: inline-block; /* ❌ Esto causa alineación horizontal */
+}
+
+.experiencia-bloque p {
+  color: #444;
+  line-height: 1.6;
+}
+	  .experiencia-cuadro {
+  display: block; /* ✅ Cada bloque ocupa toda la línea */
+}
+
+.experiencia-cuadro {
+  display: block;
+  background: #f1f8e9;               /* Fondo suave */
+  border-left: 6px solid #388E3C;    /* Borde verde a la izquierda */
+  border-radius: 10px;               /* Bordes redondeados */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra ligera */
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 900px;
+  width: 100%;
+}
+
+.experiencia-contenido {
+  text-align: left;
+}
+
+.titulo-centrado {
+  color: #388E3C;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.experiencia-contenido p,
+.experiencia-contenido ul {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+
+/* Estilos del pie de página */
+footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-contenido {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-contenido a {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+  font-weight: 500;
+}
+
+.footer-contenido a:hover {
+  text-decoration: none;
+  color: #e0ffe0;
+}
+
+  </style>
+</head>
+<body class="pagina-experiencias">
+  <header>
+    <nav>
+      <a href="/webcasaluna/index.html" class="logo-link">
+        <img src="/webcasaluna/img/Logo1.png" alt="Casa Luna" class="logo-img">
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="/webcasaluna/index.html">Inicio</a></li>
+        <li><a href="/webcasaluna/sobrenosotros.html">Sobre Nosotros</a></li>
+        <li><a href="/webcasaluna/entorno.html">Entorno</a></li>
+        <li><a href="/webcasaluna/alojamiento.html">Alojamiento</a></li>
+        <li><a href="/webcasaluna/experiencias.html">Experiencias</a></li>
+        <li><a href="/webcasaluna/cursos.html">Cursos</a></li>
+        <li><a href="/webcasaluna/galeria.html">Galería</a></li>
+        <li><a href="/webcasaluna/reservas.html">Reservas</a></li>
+        <li><a href="/webcasaluna/contacto.html">Contacto</a></li>
+        <li><a href="/webcasaluna/ubicacion.html">Ubicación</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-contenido">
+      <h1>Experiencias</h1>
+      <p>Momentos que se sienten, recuerdos que permanecen</p>
+    </div>
+  </header>
+	
+
+  <main>
+  <!-- Bloque 1: Introducción -->
+  <section class="experiencia-cuadro">
+    <div class="experiencia-contenido">
+      <h3 class="titulo-centrado">Experiencias en La Viliella y alrededores</h3>
+      <p>
+        Desde La Viliella puedes disfrutar de naturaleza en estado puro, cultura y talleres únicos. Descubre rutas que salen de la casa, excursiones por la zona, museos, actividades al aire libre y talleres prácticos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bloque 2: Actividades culturales -->
+  <section class="experiencia-cuadro">
+    <div class="experiencia-contenido">
+      <h3 class="titulo-centrado">🏛️ Actividades culturales, museos y visitas</h3>
+      <p><em>(Distancia/tiempo en coche desde La Viliella)</em></p>
+      <ul>
+        <li><strong>Centro de Interpretación de Muniellos (Cangas del Narcea)</strong> · 15 km / 20 min<br>Museo sobre flora, fauna y geología de la reserva natural. Talleres didácticos y visitas adaptadas.</li>
+        <li><strong>Bosque Activo (Las Escolinas)</strong> · 20 km / 30 min<br>Senderismo guiado, talleres multiaventura y avistamiento de fauna. Requiere reserva previa.</li>
+        <li><strong>Museo del Vino de Cangas del Narcea</strong> · 25 km / 30 min<br>Recorrido guiado sobre la cultura y elaboración del vino local. Ideal para amantes de la enología.</li>
+        <li><strong>Oficina de Turismo de Cangas del Narcea</strong> · 25 km / 30 min<br>Información, reservas y organización de visitas guiadas y actividades.</li>
+        <li><strong>Mirador del Oso (Senda del Oso)</strong> · 35 km / 40 min<br>Observación de osos en semi-libertad y senderismo interpretativo.</li>
+        <li><strong>Senda del Oso (Proaza)</strong> · 37 km / 40 min<br>Ruta para bicicleta y senderismo con cercados para ver osos. Alquiler de bicicletas y guías disponibles.</li>
+        <li><strong>Parador Monasterio de Corias</strong> · 18 km / 25 min<br>Antiguo monasterio benedictino con hotel y spa. Perfecto para relajarse tras actividades al aire libre.</li>
+        <li><strong>Monasterio de Hermo y Hayedo de Monasterio de Hermo</strong> · 32 km / 40 min<br>Iglesia románica y hayedo, con rutas de senderismo y posible avistamiento de osos.</li>
+        <li><strong>Rutas de avistamiento de osos desde Gedrez</strong> · 18 km / 25 min<br>Recorridos por el Parque Natural con senderos y carreteras antiguas para disfrutar de la fauna.</li>
+        <li><strong>Sio Ecoturismo (Pola de Somiedo)</strong> · 60 km / 1 h<br>Rutas guiadas para avistamiento de oso pardo y berrea del ciervo.</li>
+        <li><strong>Rutas y paseos a caballo en Asturias</strong> · 80-90 km / 1-1,5 h<br>Empresas locales ofrecen paseos para principiantes y jinetes experimentados, perfectos para explorar la naturaleza de otra forma.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Bloque 3: Talleres -->
+  <section class="experiencia-cuadro">
+    <div class="experiencia-contenido">
+      <h3 class="titulo-centrado">🛠️ Talleres y cursos en La Viliella</h3>
+      <p><strong>Talleres</strong></p>
+      <ul>
+        <li><strong>Cerámica / Alfarería</strong> · 4 h<br>Práctica y teoría para aprender las técnicas de modelado y esmaltado.</li>
+        <li><strong>Muro de piedra seca</strong> · 4 h<br>Construcción y teoría, aprende a levantar muros tradicionales paso a paso.</li>
+        <li><strong>Fotografía</strong> · 2 h<br>Taller práctico para capturar paisajes y detalles de la zona.</li>
+        <li><strong>Observación de aves</strong> · 2 h<br>Descubre la fauna local con técnicas de avistamiento y observación.</li>
+        <li><strong>Artesanía con materiales naturales</strong> · 1 h<br>Crea piezas únicas usando elementos del entorno natural.</li>
+        <li><strong>Mindfulness o meditación en la naturaleza</strong> · 1 h<br>Taller de conexión con el entorno y relajación guiada.</li>
+        <li><strong>Historia y leyendas de La Viliella</strong> · 1 h 30 min<br>Descubre los secretos y relatos tradicionales de nuestro pueblo.</li>
+        <li><strong>Observación de estrellas</strong> · 2 h<br>Taller nocturno para aprender sobre astronomía y contemplar el cielo del occidente asturiano.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Bloque 4: Cursos -->
+  <section class="experiencia-cuadro">
+    <div class="experiencia-contenido">
+      <h3 class="titulo-centrado">📚 Cursos</h3>
+      <p>
+        Para conocer todos los cursos disponibles en Casa Luna, visita la <a href="/webcasaluna/cursos.html"><strong>sección de cursos</strong></a>. Encontrarás propuestas formativas que combinan naturaleza, tradición y aprendizaje práctico en un entorno único.
+      </p>
+    </div>
+  </section>
+</main>
+
+
+<footer>
+  <div class="footer-contenido">
+    <p>&copy; 2025 Casa Luna – La Viliella. (Cangas de Narcea – Asturias)</p>
+    <p>
+      <a href="/webcasaluna/aviso-legal.html">Aviso legal</a> · 
+      <a href="/webcasaluna/privacidad.html">Privacidad</a>
+    </p>
+  </div>
+</footer>
+
+
+</body>
+</html>

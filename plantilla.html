@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Luna - [Título de la página]</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, sans-serif; color: #222; }
+    img { max-width: 100%; display: block; }
+
+    header {
+      position: relative;
+      min-height: 60vh;
+      background: url('img/portada.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+      z-index: 1;
+    }
+
+    nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      z-index: 3;
+    }
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      background: rgba(255,255,255,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .logo-img { height: 150px; }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover { color: #4CAF50; }
+    .nav-links li a:hover::after { width: 100%; }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 20px 30px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 10px;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-contenido h1 { font-size: 2.4rem; margin-bottom: 8px; }
+    .hero-contenido p { font-size: 1.1rem; margin-bottom: 16px; }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .oculto {
+      opacity: 0 !important;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    #hero {
+      transition: opacity 0.5s ease;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+        font-size: 2rem;
+        background: none;
+        border: none;
+        color: white;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+        cursor: pointer;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    footer {
+      background: #4CAF50;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/casa-luna/index.html" class="logo-link">
+      <img src="img/Logo1.png" alt="Casa Luna" class="logo-img">
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="/casa-luna/index.html">Inicio</a></li>
+      <li><a href="/casa-luna/sobrenosotros.html">Sobre Nosotros</a></li>
+      <li><a href="/casa-luna/entorno.html">Entorno</a></li>
+      <li><a href="/casa-luna/alojamiento.html">Alojamiento</a></li>
+      <li><a href="/casa-luna/experiencias.html">Experiencias</a></li>
+      <li><a href="/casa-luna/cursos.html">Cursos</a></li>
+      <li><a href="/casa-luna/galeria.html">Galería</a></li>
+      <li><a href="/casa-luna/reservas.html">Reservas</a></li>
+      <li><a href="/casa-luna/contacto.html">Contacto</a></li>
+      <li><a href="/casa-luna/ubicacion.html">Ubicación</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-contenido" id="hero">
+    <h1>[Título de la sección]</h1>
+    <p>[Mensaje personalizado para esta página]</p>
+  </div>
+</header>
+
+<main>
+  <!-- Aquí va el contenido específico de cada página -->
+</main>
+
+<footer>
+  <p>&copy; 2025 La Viliella – Cangas del Narcea, Asturias</p>
+  <p><a href="#">Aviso legal</a> · <a href="#">Contacto</a></p>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const hero = document.getElementById('hero');
+
+    if (toggle && navLinks && hero) {
+      toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hero.classList.toggle('oculto');
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          hero.classList.remove('oculto');
+        });
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

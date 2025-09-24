@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Luna - Apartamentos</title>
+
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, sans-serif; color: #222; }
+    img { max-width: 100%; display: block; }
+
+    header {
+      position: relative;
+      min-height: 60vh;
+      background: url('img/portada.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+	  	  header {
+  height: 40vh;
+  min-height: 250px;
+}
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+      z-index: 1;
+    }
+
+    nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      z-index: 3;
+    }
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      background: rgba(255,255,255,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .logo-img { height: 150px; }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
+    .nav-links li a:hover { color: #4CAF50; }
+    .nav-links li a:hover::after { width: 100%; }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 20px 30px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 10px;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+    }
+    .hero-contenido h1 { font-size: 2.4rem; margin-bottom: 8px; }
+    .hero-contenido p { font-size: 1.1rem; margin-bottom: 16px; }
+
+    .btn {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: #fff;
+      padding: 12px 24px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
+      transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, #45a049, #3e8e41);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    .btn:active { transform: translateY(1px); }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .info-grid {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .info-bloque {
+      background: none;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      animation: fadeInUp 0.8s ease forwards;
+      grid-column: 1 / -1;
+    }
+
+    .info-bloque h2 { font-size: 1.5rem; margin-bottom: 15px; color: #4CAF50; }
+    .info-bloque p { line-height: 1.6; margin-bottom: 30px; }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .galeria img {
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      object-fit: cover;
+    }
+
+    .footer-legal {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .footer-legal a {
+      margin: 0 10px;
+      color: #444;
+      text-decoration: none;
+    }
+	  
+    .info-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+      font-family: sans-serif;
+    }
+
+    .info-bloque h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .info-bloque p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .carrusel {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .carrusel-imagenes {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+
+    .carrusel-imagenes img {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 500px;
+      scroll-snap-align: start;
+      border-radius: 6px;
+    }
+
+    .carrusel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255,255,255,0.8);
+      border: none;
+      font-size: 2rem;
+      padding: 0 10px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .carrusel-btn.prev { left: 0; }
+    .carrusel-btn.next { right: 0; }
+	  
+
+	  
+footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-contenido {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-contenido a {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+  font-weight: 500;
+}
+
+.footer-contenido a:hover {
+  text-decoration: none;
+  color: #e0ffe0;
+}
+
+	  
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, sans-serif; color: #222; }
+  img { max-width: 100%; display: block; }
+
+ .bienvenida-cuadro {
+  width: 100%;
+  max-width: 900px;
+  background: #e3f2e1;
+  border-left: 8px solid #4CAF50;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 30px;
+  margin: 40px auto;
+}
+
+.bienvenida-contenido h2 {
+  text-align: center;
+  color: #4CAF50;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.bienvenida-contenido p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+
+	  .info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+</style>
+</head>
+<body>
+	
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo-link">
+        <img src="img/Logo1.png" alt="Casa Luna" class="logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="entorno.html">Entorno</a></li>
+        <li><a href="alojamiento.html">Alojamiento</a></li>
+        <li><a href="experiencias.html">Experiencias</a></li>
+        <li><a href="cursos.html">Cursos</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+      </ul>
+    </nav>
+    <div class="hero-contenido">
+      <h1>Apartamentos</h1>
+      <p>Tu rincón privado en plena naturaleza</p>
+    </div>
+  </header>
+
+  <section class="info-grid">
+	  
+	 <section class="bienvenida-cuadro">
+  <div class="bienvenida-contenido">
+    <h2>🌙 Apartamento Luna Llena</h2>
+    <p>Con 140 m² de superficie y capacidad para 6 personas, el apartamento Luna Llena es perfecto para familias o grupos que buscan espacio, confort y un entorno único en plena naturaleza asturiana.</p>
+
+    <h3>🏡 Distribución y estilo</h3>
+    <ul>
+      <li>Corredor asturiano de entrada.</li>
+      <li>Amplia cocina-comedor totalmente equipada.</li>
+      <li>Gran salón.</li>
+      <li>3 dormitorios (uno con cama de matrimonio, otro con dos camas individuales y otro con cama de matrimonio y baño en su interior).</li>
+      <li>2 cuartos de baño completos.</li>
+      <li>Pasillo distribuidor.</li>
+    </ul>
+    <p>El estilo combina lo rústico con lo acogedor: paredes de piedra, techos de castaño y suelos de madera que transmiten calidez. Cada estancia es amplia, luminosa y decorada con mimo, manteniendo la esencia de las casas asturianas.</p>
+
+    <h3>🌄 Vistas y espacios exteriores</h3>
+    <p>Este apartamento cuenta con un porche amueblado con barbacoa y fuente, perfecto para comidas al aire libre. Además, dispone de un jardín arbolado privado de 300 m², también con fuente de manantial natural, donde relajarse rodeado de naturaleza y con vistas espectaculares a las montañas de la Reserva de la Biosfera de Muniellos.</p>
+
+    <h3>🔥 Comodidades y servicios</h3>
+    <ul>
+      <li>Chimenea de pellet y calefacción.</li>
+      <li>Wifi gratuito.</li>
+      <li>Cocina totalmente equipada.</li>
+      <li>Ropa de cama y toallas incluidas.</li>
+      <li>Limpieza incluida al entrar y al salir.</li>
+      <li>Para estancias largas: servicio adicional bajo petición (con coste extra).</li>
+      <li>Entrada independiente y aparcamiento en la puerta.</li>
+      <li>Mascotas bienvenidas.</li>
+    </ul>
+
+    <h3>✨ Una experiencia única</h3>
+    <p>El apartamento Luna Llena ofrece amplitud, independencia y un ambiente hogareño con encanto asturiano. Ideal para disfrutar en grupo sin renunciar a la tranquilidad, la comodidad y unas vistas de ensueño.</p>
+  </div>
+</section>
+
+    <div class="carrusel" id="carrusel-luna-llena">
+      <button class="carrusel-btn prev" onclick="moverCarrusel('carrusel-luna-llena', -1)">‹</button>
+      <div class="carrusel-imagenes">
+        <!-- Imágenes Luna Llena -->
+        <!-- Ajusta nombres si es necesario -->
+        <img src="img/luna-llena/luna-llena1.jpg" alt="Luna Llena 1">
+        <img src="img/luna-llena/luna-llena2.jpg" alt="Luna Llena 2">
+        <img src="img/luna-llena/luna-llena3.jpg" alt="Luna Llena 3">
+        <img src="img/luna-llena/luna-llena4.jpg" alt="Luna Llena 4">
+        <img src="img/luna-llena/luna-llena5.jpg" alt="Luna Llena 5">
+        <img src="img/luna-llena/luna-llena6.jpg" alt="Luna Llena 6">
+        <img src="img/luna-llena/luna-llena7.jpg" alt="Luna Llena 7">
+        <img src="img/luna-llena/luna-llena8.jpg" alt="Luna Llena 8">
+        <img src="img/luna-llena/luna-llena9.jpg" alt="Luna Llena 9">
+        <img src="img/luna-llena/luna-llena10.jpg" alt="Luna Llena 10">
+        <img src="img/luna-llena/luna-llena11.jpg" alt="Luna Llena 11">
+        <img src="img/luna-llena/luna-llena12.jpg" alt="Luna Llena 12">
+        <img src="img/luna-llena/luna-llena13.jpg" alt="Luna Llena 13">
+        <img src="img/luna-llena/luna-llena14.jpg" alt="Luna Llena 14">
+        <img src="img/luna-llena/luna-llena15.jpg" alt="Luna Llena 15">
+        <img src="img/luna-llena/luna-llena16.jpg" alt="Luna Llena 16">
+        <img src="img/luna-llena/luna-llena17.jpg" alt="Luna Llena 17">
+        <img src="img/luna-llena/luna-llena18.jpg" alt="Luna Llena 18">
+        <img src="img/luna-llena/luna-llena19.jpg" alt="Luna Llena 19">
+        <img src="img/luna-llena/luna-llena20.jpg" alt="Luna Llena 20">
+		<img src="img/luna-llena/luna-llena21.jpg" alt="Luna Llena 21">
+		<img src="img/luna-llena/luna-llena22.jpg" alt="Luna Llena 22">
+		<img src="img/luna-llena/luna-llena23.jpg" alt="Luna Llena 23">
+		<img src="img/luna-llena/luna-llena24.jpg" alt="Luna Llena 24">
+		<img src="img/luna-llena/luna-llena25.jpg" alt="Luna Llena 25">
+		<img src="img/luna-llena/luna-llena26.jpg" alt="Luna Llena 26">
+      </div>
+      <button class="carrusel-btn next" onclick="moverCarrusel('carrusel-luna-llena', 1)">›</button>
+    </div>
+  
+
+  <section class="bienvenida-cuadro">
+  <div class="bienvenida-contenido">
+    <h2>🌙 Apartamento Luna Menguante</h2>
+    <p>Con 75 m² de amplitud y capacidad para 2 + 2 personas, el apartamento Luna Menguante es el lugar ideal para disfrutar de una estancia cómoda, acogedora y en plena naturaleza.</p>
+
+    <h3>🏡 Distribución y estilo</h3>
+    <ul>
+      <li>Hall de entrada.</li>
+      <li>Amplio comedor con cocina independiente totalmente equipada.</li>
+      <li>Salón con sofá cama.</li>
+      <li>1 dormitorio espacioso.</li>
+      <li>1 cuarto de baño completo.</li>
+    </ul>
+    <p>La decoración combina el encanto rústico con todas las comodidades modernas: paredes de piedra, techos de madera de castaño y suelos de madera que aportan calidez y autenticidad. Cada estancia es amplia y luminosa, manteniendo la esencia de las casas asturianas con un toque personal y cuidado.</p>
+
+    <h3>🌄 Vistas y espacios exteriores</h3>
+    <p>Disfruta de unas impresionantes vistas a las montañas de la Reserva de la Biosfera de Muniellos desde su terraza y jardín privado de 100 m². Un lugar perfecto para relajarse, leer, compartir comidas al aire libre o simplemente contemplar la belleza del paisaje.</p>
+
+    <h3>🔥 Comodidades y servicios</h3>
+    <ul>
+      <li>Chimenea de pellet y calefacción.</li>
+      <li>Wifi gratuito.</li>
+      <li>Cocina totalmente equipada.</li>
+      <li>Ropa de cama y toallas incluidas.</li>
+      <li>Limpieza incluida al entrar y al salir.</li>
+      <li>Para estancias largas: servicio adicional disponible bajo petición (con coste extra).</li>
+      <li>Entrada independiente y aparcamiento delante de la casa.</li>
+      <li>Mascotas bienvenidas.</li>
+    </ul>
+
+    <h3>✨ Una experiencia única</h3>
+    <p>El apartamento Luna Menguante ofrece un ambiente tranquilo, amplio y lleno de encanto. Perfecto para quienes buscan desconectar, disfrutar de la naturaleza y sentirse como en casa en un espacio cuidado hasta el último detalle.</p>
+  </div>
+</section>
+
+    <div class="carrusel" id="carrusel-luna-menguante">
+      <button class="carrusel-btn prev" onclick="moverCarrusel('carrusel-luna-menguante', -1)">‹</button>
+      <div class="carrusel-imagenes">
+        <!-- Imágenes Luna Menguante -->
+        <img src="img/luna-menguante/luna-menguante1.jpg" alt="Luna Menguante 1">
+        <img src="img/luna-menguante/luna-menguante2.jpg" alt="Luna Menguante 2">
+        <img src="img/luna-menguante/luna-menguante3.jpg" alt="Luna Menguante 3">
+        <img src="img/luna-menguante/luna-menguante4.jpg" alt="Luna Menguante 4">
+        <img src="img/luna-menguante/luna-menguante5.jpg" alt="Luna Menguante 5">
+        <img src="img/luna-menguante/luna-menguante6.jpg" alt="Luna Menguante 6">
+        <img src="img/luna-menguante/luna-menguante7.jpg" alt="Luna Menguante 7">
+        <img src="img/luna-menguante/luna-menguante8.jpg" alt="Luna Menguante 8">
+        <img src="img/luna-menguante/luna-menguante9.jpg" alt="Luna Menguante 9">
+        <img src="img/luna-menguante/luna-menguante10.jpg" alt="Luna Menguante 10">
+        <img src="img/luna-menguante/luna-menguante11.jpg" alt="Luna Menguante 11">
+        <img src="img/luna-menguante/luna-menguante12.jpg" alt="Luna Menguante 12">
+        <img src="img/luna-menguante/luna-menguante13.jpg" alt="Luna Menguante 13">
+        <img src="img/luna-menguante/luna-menguante14.jpg" alt="Luna Menguante 14">
+        <img src="img/luna-menguante/luna-menguante15.jpg" alt="Luna Menguante 15">
+        <img src="img/luna-menguante/luna-menguante16.jpg" alt="Luna Menguante 16">
+        <img src="img/luna-menguante/luna-menguante17.jpg" alt="Luna Menguante 17">
+        <img src="img/luna-menguante/luna-menguante18.jpg" alt="Luna Menguante 18">
+        <img src="img/luna-menguante/luna-menguante19.jpg" alt="Luna Menguante 19">
+        <img src="img/luna-menguante/luna-menguante20.jpg" alt="Luna Menguante 20">
+      </div>
+      <button class="carrusel-btn next" onclick="moverCarrusel('carrusel-luna-menguante', 1)">›</button>
+    </div>
+  </div>
+
+  <section class="bienvenida-cuadro">
+  <div class="bienvenida-contenido">
+    <h2>🌙 Apartamento Luna Creciente</h2>
+    <p>Con 130 m² de superficie y capacidad para 6 personas, el apartamento Luna Creciente es una opción ideal para quienes desean combinar comodidad, amplitud y un entorno natural incomparable.</p>
+
+    <h3>🏡 Distribución y estilo</h3>
+    <ul>
+      <li>Amplio salón-comedor.</li>
+      <li>Cocina independiente totalmente equipada.</li>
+      <li>Despensa.</li>
+      <li>1 dormitorio muy amplio con dos camas de matrimonio.</li>
+      <li>1 dormitorio con cama de matrimonio y baño en su interior.</li>
+      <li>2 cuartos de baño completos.</li>
+    </ul>
+    <p>La decoración rústica con paredes de piedra, techos de madera de castaño y suelos de madera aporta carácter y calidez. Las estancias, luminosas y amplias, han sido decoradas con mucho gusto, respetando la esencia de las casas asturianas pero con un toque moderno y confortable.</p>
+
+    <h3>🌄 Vistas y espacios exteriores</h3>
+    <p>El apartamento dispone de un gran porche privado de 100 m² con barbacoa, sofás y zona de descanso, además de un jardín privado de 1000 m², perfecto para disfrutar del aire puro, relajarse en plena naturaleza o contemplar las impresionantes vistas de la Reserva de la Biosfera de Muniellos.</p>
+
+    <h3>🔥 Comodidades y servicios</h3>
+    <ul>
+      <li>Chimenea de pellet y calefacción.</li>
+      <li>Wifi gratuito.</li>
+      <li>Cocina totalmente equipada.</li>
+      <li>Ropa de cama y toallas incluidas.</li>
+      <li>Limpieza incluida al entrar y al salir.</li>
+      <li>Para estancias largas: servicio adicional bajo petición (con coste extra).</li>
+      <li>Entrada independiente y aparcamiento delante de la casa.</li>
+      <li>Mascotas bienvenidas.</li>
+    </ul>
+
+    <h3>✨ Una experiencia única</h3>
+    <p>El apartamento Luna Creciente es un espacio amplio, tranquilo y lleno de detalles que invitan a descansar y disfrutar. Perfecto para quienes buscan privacidad, naturaleza y la comodidad de un alojamiento cuidado con esmero.</p>
+  </div>
+</section>
+
+
+  <div class="carrusel" id="carrusel-luna-creciente">
+    <button class="carrusel-btn prev" onclick="moverCarrusel('carrusel-luna-creciente', -1)">‹</button>
+    <div class="carrusel-imagenes">
+      <img src="img/luna-creciente/luna-creciente1.jpg" alt="Luna Creciente 1">
+      <img src="img/luna-creciente/luna-creciente2.jpg" alt="Luna Creciente 2">
+      <img src="img/luna-creciente/luna-creciente3.jpg" alt="Luna Creciente 3">
+      <img src="img/luna-creciente/luna-creciente4.jpg" alt="Luna Creciente 4">
+      <img src="img/luna-creciente/luna-creciente5.jpg" alt="Luna Creciente 5">
+      <img src="img/luna-creciente/luna-creciente6.jpg" alt="Luna Creciente 6">
+      <img src="img/luna-creciente/luna-creciente7.jpg" alt="Luna Creciente 7">
+      <img src="img/luna-creciente/luna-creciente8.jpg" alt="Luna Creciente 8">
+      <img src="img/luna-creciente/luna-creciente9.jpg" alt="Luna Creciente 9">
+      <img src="img/luna-creciente/luna-creciente10.jpg" alt="Luna Creciente 10">
+      <img src="img/luna-creciente/luna-creciente11.jpg" alt="Luna Creciente 11">
+      <img src="img/luna-creciente/luna-creciente12.jpg" alt="Luna Creciente 12">
+      <img src="img/luna-creciente/luna-creciente13.jpg" alt="Luna Creciente 13">
+      <img src="img/luna-creciente/luna-creciente14.jpg" alt="Luna Creciente 14">
+      <img src="img/luna-creciente/luna-creciente15.jpg" alt="Luna Creciente 15">
+      <img src="img/luna-creciente/luna-creciente16.jpg" alt="Luna Creciente 16">
+      <img src="img/luna-creciente/luna-creciente17.jpg" alt="Luna Creciente 17">
+      <img src="img/luna-creciente/luna-creciente18.jpg" alt="Luna Creciente 18">
+      <img src="img/luna-creciente/luna-creciente19.jpg" alt="Luna Creciente 19">
+      <img src="img/luna-creciente/luna-creciente20.jpg" alt="Luna Creciente 20">
+	  <img src="img/luna-creciente/luna-creciente21.jpg" alt="Luna Creciente 14">
+      <img src="img/luna-creciente/luna-creciente22.jpg" alt="Luna Creciente 15">
+      <img src="img/luna-creciente/luna-creciente23.jpg" alt="Luna Creciente 16">
+      <img src="img/luna-creciente/luna-creciente24.jpg" alt="Luna Creciente 17">
+      <img src="img/luna-creciente/luna-creciente25.jpg" alt="Luna Creciente 18">
+      <img src="img/luna-creciente/luna-creciente26.jpg" alt="Luna Creciente 19">
+      <img src="img/luna-creciente/luna-creciente27.jpg" alt="Luna Creciente 20">
+    </div>
+    <button class="carrusel-btn next" onclick="moverCarrusel('carrusel-luna-creciente', 1)">›</button>
+  </div>
+</div>
+
+ </section>
+
+<!-- Script carrusel -->
+<script>
+function moverCarrusel(id, direccion) {
+  const carrusel = document.getElementById(id).querySelector('.carrusel-imagenes');
+  const ancho = carrusel.clientWidth;
+  carrusel.scrollBy({ left: direccion * ancho, behavior: 'smooth' });
+}
+</script>
+
+
+<footer>
+  <div class="footer-contenido">
+    <p>&copy; 2025 Casa Luna – La Viliella. (Cangas de Narcea – Asturias)</p>
+    <p>
+      <a href="/webcasaluna/aviso-legal.html">Aviso legal</a> · 
+      <a href="/webcasaluna/privacidad.html">Privacidad</a>
+    </p>
+  </div>
+</footer>
+
+
+
+
+
+

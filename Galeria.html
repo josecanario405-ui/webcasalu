@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Luna - inicio</title>
+  <link rel="stylesheet" href="/webcasaluna/style.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, sans-serif; color: #222; }
+    img { max-width: 100%; display: block; }
+
+  header {
+  position: relative;
+  height: 40vh;
+  min-height: 250px;
+  background: url('/webcasaluna/img/portada.jpg') center center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.hero-contenido {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-contenido h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.hero-contenido p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+    nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      z-index: 3;
+    }
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      background: rgba(255,255,255,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .logo-img { height: 150px; }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
+    .nav-links li a:hover { color: #4CAF50; }
+    .nav-links li a:hover::after { width: 100%; }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 20px 30px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 10px;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+    }
+    .hero-contenido h1 { font-size: 2.4rem; margin-bottom: 8px; }
+    .hero-contenido p { font-size: 1.1rem; margin-bottom: 16px; }
+    .btn {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: #fff;
+      padding: 12px 24px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
+      transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, #45a049, #3e8e41);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    .btn:active { transform: translateY(1px); }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  
+	  .filtros-galeria {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.filtros-galeria button {
+  background: #e3f2e1;
+  border: none;
+  padding: 10px 16px;
+  margin: 0 5px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.filtros-galeria button.activo,
+.filtros-galeria button:hover {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+	  .galeria-filtrada {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+
+.foto-galeria {
+  background: #f1f8e9;
+  border-left: 4px solid #4CAF50;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.foto-galeria img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+
+	footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-contenido {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-contenido a {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+  font-weight: 500;
+}
+
+.footer-contenido a:hover {
+  text-decoration: none;
+  color: #e0ffe0;
+}
+
+	  body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+	  .galeria-filtrada {
+  min-height: 300px; /* ajusta según lo que necesites */
+}
+	  .ver-mas-contenedor {
+  text-align: center;
+  margin: 40px 0;
+}
+
+#ver-mas {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#ver-mas:hover {
+  background: #45a049;
+}
+	  .titulo-verde {
+  color: #4CAF50;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+
+footer {
+  position: sticky;
+  top: 100vh;
+}
+	.menu-toggle {
+  display: none; /* Oculto por defecto */
+}
+
+/* Solo se muestra en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 11;
+    cursor: pointer;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/webcasaluna/index.html" class="logo-link">
+      <img src="/webcasaluna/img/Logo1.png" alt="Casa Luna" class="logo-img">
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="/webcasaluna/index.html">Inicio</a></li>
+      <li><a href="/webcasaluna/sobrenosotros.html">Sobre Nosotros</a></li>
+      <li><a href="/webcasaluna/entorno.html">Entorno</a></li>
+      <li><a href="/webcasaluna/alojamiento.html">Alojamiento</a></li>
+      <li><a href="/webcasaluna/experiencias.html">Experiencias</a></li>
+      <li><a href="/webcasaluna/cursos.html">Cursos</a></li>
+      <li><a href="/webcasaluna/galeria.html">Galería</a></li>
+      <li><a href="/webcasaluna/reservas.html">Reservas</a></li>
+      <li><a href="/webcasaluna/contacto.html">Contacto</a></li>
+      <li><a href="/webcasaluna/ubicacion.html">Ubicación</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-contenido">
+    <h1>Galerias</h1>
+    <p>Instantes que hablan sin palabras</p>
+  </div>
+</header>
+
+	
+	
+	<section class="galeria-filtrada">
+  <h2 class="titulo-tarifa titulo-verde">Galería de Experiencias</h2>
+
+  <div class="filtros-galeria">
+    <button data-filtro="todos" class="activo">Todos</button>
+    <button data-filtro="entorno">Entorno</button>
+    <button data-filtro="cursos">Cursos</button>
+    <button data-filtro="senderismo">Senderismo</button>
+    <button data-filtro="naturaleza">Naturaleza</button>
+  </div>
+
+  <div class="galeria-grid">
+    <!-- Aquí van tus imágenes -->
+  </div>
+		<div class="ver-mas-contenedor">
+    <button id="ver-mas">Ver más</button>
+  </div>
+  <!-- Categoría: Entorno -->
+  <div class="foto-galeria entorno"><img src="img/entorno1.jpg" alt="Entorno 1"></div>
+  <div class="foto-galeria entorno"><img src="img/entorno2.jpg" alt="Entorno 2"></div>
+  <!-- ... hasta entorno30.jpg -->
+
+  <!-- Categoría: Cursos -->
+  <div class="foto-galeria cursos"><img src="img/cursos1.jpg" alt="Cursos 1"></div>
+  <!-- ... hasta cursos30.jpg -->
+
+  <!-- Categoría: Senderismo -->
+  <div class="foto-galeria senderismo"><img src="img/senderismo1.jpg" alt="Senderismo 1"></div>
+  <!-- ... hasta senderismo30.jpg -->
+
+  <!-- Categoría: Naturaleza -->
+  <div class="foto-galeria naturaleza"><img src="img/naturaleza1.jpg" alt="Naturaleza 1"></div>
+  <!-- ... hasta naturaleza30.jpg -->
+	  
+  <!-- Categoría: Naturaleza -->
+  <div class="foto-galeria naturaleza"><img src="img/naturaleza1.jpg" alt="Naturaleza 1" loading="lazy"></div>
+  <div class="foto-galeria naturaleza"><img src="img/naturaleza2.jpg" alt="Naturaleza 2" loading="lazy"></div>
+  <div class="foto-galeria naturaleza"><img src="img/naturaleza3.jpg" alt="Naturaleza 3" loading="lazy"></div>
+  <!-- ... -->
+  <div class="foto-galeria naturaleza"><img src="img/naturaleza30.jpg" alt="Naturaleza 30" loading="lazy"></div>
+
+</div>
+</section>
+	
+	<script>
+  const botones = document.querySelectorAll('.filtros-galeria button');
+  const fotos = document.querySelectorAll('.foto-galeria');
+
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      document.querySelector('.filtros-galeria .activo').classList.remove('activo');
+      boton.classList.add('activo');
+
+      const filtro = boton.getAttribute('data-filtro');
+
+      fotos.forEach(foto => {
+        if (filtro === 'todos' || foto.classList.contains(filtro)) {
+          foto.style.display = 'block';
+        } else {
+          foto.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+<footer>
+  <div class="footer-contenido">
+    <p>&copy; 2025 Casa Luna – La Viliella. (Cangas de Narcea – Asturias)</p>
+    <p>
+      <a href="/webcasaluna/aviso-legal.html">Aviso legal</a> · 
+      <a href="/webcasaluna/privacidad.html">Privacidad</a>
+    </p>
+  </div>
+</footer>
+
+
+
+	
+
+
+

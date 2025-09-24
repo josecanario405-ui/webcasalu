@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Luna - Cursos</title>
+  <link rel="stylesheet" href="/webcasaluna/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .pagina-cursos header {
+      background: url('/webcasaluna/img/portada.jpg') center center/cover no-repeat;
+    }
+
+    header {
+      position: relative;
+      height: 40vh;
+      min-height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+      z-index: 1;
+    }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 20px 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      color: #fff;
+      text-align: center;
+    }
+
+  nav {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px;
+  z-index: 3;
+}
+
+.logo-link {
+  position: absolute;
+  left: 20px;
+  background: rgba(255,255,255,0.7);
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.logo-img {
+  height: 150px;
+}
+
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #4CAF50;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      flex: 1;
+      padding: 40px 20px;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+    }
+
+  .curso-cuadro {
+  background: #e8f5e9;
+  border-left: 6px solid #2e7d32;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 900px;
+  width: 100%;
+}
+
+.curso-contenido {
+  text-align: center;
+}
+
+.botones-cursos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.boton-verde {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.boton-verde:hover {
+  background-color: #388E3C;
+}
+	  .titulo-tarifa {
+  color: #4caf50; /* Verde tipo Casa Luna */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+
+   footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-contenido {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-contenido a {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+  font-weight: 500;
+}
+
+.footer-contenido a:hover {
+  text-decoration: none;
+  color: #e0ffe0;
+}
+
+  </style>
+</head>
+
+<body class="pagina-cursos">
+  <header>
+    <nav>
+      <a href="/webcasaluna/index.html" class="logo-link">
+        <img src="/webcasaluna/img/Logo1.png" alt="Casa Luna" class="logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="/webcasaluna/index.html">Inicio</a></li>
+        <li><a href="/webcasaluna/sobrenosotros.html">Sobre Nosotros</a></li>
+        <li><a href="/webcasaluna/entorno.html">Entorno</a></li>
+        <li><a href="/webcasaluna/alojamiento.html">Alojamiento</a></li>
+        <li><a href="/webcasaluna/experiencias.html">Experiencias</a></li>
+        <li><a href="/webcasaluna/cursos.html">Cursos</a></li>
+        <li><a href="/webcasaluna/galeria.html">Galería</a></li>
+        <li><a href="/webcasaluna/reservas.html">Reservas</a></li>
+        <li><a href="/webcasaluna/contacto.html">Contacto</a></li>
+        <li><a href="/webcasaluna/ubicacion.html">Ubicación</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-contenido">
+      <h1>Cursos</h1>
+      <p>Explora, aprende y vive el alma de Asturias</p>
+    </div>
+  </header>
+	
+	<!-- Contenido principal -->
+  <main>
+  <section class="curso-cuadro">
+  <div class="curso-contenido">
+    <h2 class="titulo-tarifa">Propuestas formativas en Casa Luna</h2>
+    <p>
+      En Casa Luna te ofrecemos tres caminos para aprender, reconectar y crecer: cursos intensivos, retiros de bienestar y talleres creativos. Elige el formato que mejor se adapta a ti.
+    </p>
+
+    <div class="botones-cursos">
+      <a href="/webcasaluna/formacion.html" class="boton-verde">Formación</a>
+      <a href="/webcasaluna/retiros.html" class="boton-verde">Retiros</a>
+      <a href="/webcasaluna/talleres.html" class="boton-verde">Talleres</a>
+    </div>
+  </div>
+</section>
+</main>
+
+  <!-- Pie de página -->
+ <footer>
+  <div class="footer-contenido">
+    <p>&copy; 2025 Casa Luna – La Viliella. (Cangas de Narcea – Asturias)</p>
+    <p>
+      <a href="/webcasaluna/aviso-legal.html">Aviso legal</a> · 
+      <a href="/webcasaluna/privacidad.html">Privacidad</a>
+    </p>
+  </div>
+</footer>
+
+
+<!-- Script para menú responsive -->
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const hero = document.querySelector('#hero');
+
+  toggle.addEventListener('click', () => {
+    const menuEstaAbierto = navLinks.classList.contains('active');
+
+    if (menuEstaAbierto) {
+      // El menú está abierto → cerramos y mostramos el cuadro de bienvenida
+      navLinks.classList.remove('active');
+      hero.classList.remove('oculto');
+    } else {
+      // El menú está cerrado → abrimos y ocultamos el cuadro de bienvenida
+      navLinks.classList.add('active');
+      hero.classList.add('oculto');
+    }
+  });
+</script>
+</body>
+</html>
+
+

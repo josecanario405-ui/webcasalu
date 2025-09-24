@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Luna - Inicio</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, sans-serif; color: #222; }
+    img { max-width: 100%; display: block; }
+
+    header {
+      position: relative;
+      min-height: 60vh;
+      background: url('img/portada.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+	  	  header {
+  height: 40vh;
+  min-height: 250px;
+}
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+      z-index: 1;
+    }
+
+    nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      z-index: 3;
+    }
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      background: rgba(255,255,255,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .logo-img { height: 150px; }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
+    .nav-links li a:hover { color: #4CAF50; }
+    .nav-links li a:hover::after { width: 100%; }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 20px 30px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 10px;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+    }
+    .hero-contenido h1 { font-size: 2.4rem; margin-bottom: 8px; }
+    .hero-contenido p { font-size: 1.1rem; margin-bottom: 16px; }
+ .btn,
+.btn-entorno,
+.btn-reserva {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 12px 24px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+.btn:hover,
+.btn-entorno:hover,
+.btn-reserva:hover {
+  background-color: #388E3C;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.btn:active,
+.btn-entorno:active,
+.btn-reserva:active {
+  transform: translateY(1px);
+}
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .info-grid {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .info-bloque {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .info-bloque:nth-child(1) { animation-delay: 0.2s; }
+    .info-bloque:nth-child(2) { animation-delay: 0.4s; }
+    .info-bloque:nth-child(3) { animation-delay: 0.6s; }
+    .info-bloque:nth-child(4) { animation-delay: 0.8s; }
+    .info-bloque h2 { font-size: 1.5rem; margin-bottom: 15px; color: #4CAF50; }
+    .info-bloque p, .info-bloque ul { line-height: 1.6; margin: 0; }
+    .info-bloque ul { padding-left: 20px; }
+	  }
+
+  
+    }
+	  .tarifas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.tarjeta-tarifa {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 300px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex: 1 1 280px;
+}
+
+.tarjeta-tarifa h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.tarjeta-tarifa p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.tarjeta-tarifa ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.tarjeta-tarifa li {
+  margin-bottom: 6px;
+}
+	  body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fdfdfd;
+    }
+
+    .tarifas-contenedor {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .tarifas-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+
+    .tarjeta-tarifa {
+      background-color: #f8f8f8;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 300px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      flex: 1 1 280px;
+    }
+
+    .tarjeta-tarifa h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .tarjeta-tarifa p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .tarjeta-tarifa ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .tarjeta-tarifa li {
+      margin-bottom: 6px;
+    }
+
+    .tabla-tarifas {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .tabla-tarifas table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+
+    .tabla-tarifas th,
+    .tabla-tarifas td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      font-size: 1rem;
+    }
+
+    .tabla-tarifas th {
+      background-color: #f0f0f0;
+    }
+
+    .leyenda-temporadas {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+.tarifas-contenedor {
+  flex: 1;
+}
+<style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: sans-serif;
+      background-color: #fdfdfd;
+    }
+
+    main {
+      flex: 1;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* Tarjetas */
+	  
+ .tarjeta-tarifa {
+  background-color: #e3f2e1; /* verde claro coherente */
+  color: #4CAF50; /* verde corporativo para texto */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* espacio entre elementos del contenido */
+}
+
+.tarjeta-tarifa h2 {
+  margin-bottom: 1.2rem; /* más separación del título principal */
+  font-size: 1.4rem;
+  color: #4CAF50;
+}
+
+.tarjeta-tarifa h3,
+.tarjeta-tarifa h4 {
+  margin: 0.3rem 0 0.2rem;
+  font-size: 1.1rem;
+  color: #4CAF50;
+}
+
+.tarjeta-tarifa p {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+}
+
+.tarjeta-tarifa ul {
+  margin: 0.2rem 0;
+  padding-left: 1rem;
+}
+	  
+	
+.btn-reserva {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: #fff;
+  padding: 10px 18px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-verde {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #4CAF50; /* ✅ fondo verde correcto */
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-verde:hover {
+  background-color: #388E3C; /* tono más oscuro al pasar el ratón */
+}
+
+
+	  h2.comparativa {
+  color: #4CAF50;
+}
+	  
+  .tabla-tarifas {
+  background: #e3f2e1; /* fondo verde claro */
+  border-left: 6px solid #4CAF50;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.tabla-tarifas h2.comparativa {
+  text-align: center;
+  color: #4CAF50;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.tabla-tarifas table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-tarifas th,
+.tabla-tarifas td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+.tabla-tarifas th {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 600;
+}
+
+.tabla-tarifas td {
+  background-color: #f9fdf7;
+}
+
+.leyenda-temporadas {
+  max-width: 1000px;
+  margin: 20px auto 60px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  background: #f1f8e9;
+  border-left: 4px solid #4CAF50;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+	
+
+.fase-lunar {
+  font-size: 1.8rem;
+  margin-left: 0.5rem;
+}
+	  .seccion-reservas {
+  padding: 2rem;
+  background-color: #f9fbe7;
+  border-top: 2px solid #c5e1a5;
+}
+
+.seccion-reservas h2 {
+  color: #4CAF50;
+  margin-bottom: 1rem;
+}
+
+.seccion-reservas form {
+  display: grid;
+  gap: 1rem;
+  max-width: 500px;
+}
+	  .seccion-reservas {
+  padding: 2rem;
+  background-color: #f1f8e9;
+  border-top: 2px solid #c5e1a5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.seccion-reservas h2 {
+  color: #4CAF50;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.seccion-reservas form {
+  display: grid;
+  gap: 1rem;
+}
+
+.seccion-reservas input,
+.seccion-reservas select,
+.seccion-reservas textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.seccion-reservas button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.seccion-reservas button:hover {
+  background-color: #388E3C;
+}
+	.consulta-formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.fila-formulario {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.campo {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.boton-centro {
+  text-align: center;
+}
+
+.boton-centro button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-centro button:hover {
+  background-color: #388E3C;
+}
+
+	  #calculadora-tarifas {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+#calculadora-tarifas label {
+  font-weight: bold;
+}
+
+#calculadora-tarifas select,
+#calculadora-tarifas input {
+  padding: 0.5rem;
+  border: 1px solid #c8e6c9;
+  border-radius: 6px;
+}
+
+#calculadora-tarifas button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#calculadora-tarifas button:hover {
+  background-color: #388e3c;
+}
+
+ footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-contenido {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-contenido a {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+  font-weight: 500;
+}
+
+.footer-contenido a:hover {
+  text-decoration: none;
+  color: #e0ffe0;
+}
+
+
+  </style>
+</head>
+<body>
+	
+<header>
+  <nav>
+    <a href="index.html" class="logo-link">
+      <img src="img/Logo1.png" alt="Casa Luna" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="sobre nosotros.html">Sobre Nosotros</a></li>
+      <li><a href="entorno.html">Entorno</a></li>
+      <li><a href="alojamiento.html">Alojamiento</a></li>
+      <li><a href="experiencias.html">Experiencias</a></li>
+	  <li><a href="cursos.html">Cursos</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="reservas.html">Reservas</a></li>
+	  <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="ubicacion.html">Ubicación</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-contenido">
+    <h1>Tarifas</h1>
+    <p>Precios honestos para una experiencia auténtica</p>
+    
+</header>
+	
+	
+	<main>
+				
+<section class="tarifas-grid">
+			
+    <!-- Tarjetas por apartamento -->
+  <div class="tarjeta-tarifa">
+  <h2 class="titulo-tarifa">Luna Llena <span class="fase-lunar">🌕</span></h2>
+  <p><strong>Capacidad:</strong> 6 plazas</p>
+  <p><strong>Superficie:</strong> 130 m²</p>
+  <p>Jardín privado, entrada independiente y aparcamiento propio.</p>
+
+  <h3>Tarifas</h3>
+  <ul>
+    <li>Temporada baja: 125 €/noche</li>
+    <li>Temporada alta: 175 €/noche</li>
+    <li><em>(julio, agosto, Semana Santa, puentes y Navidad)</em></li>
+  </ul>
+
+  <h3>Descuentos</h3>
+  <ul>
+    <li>Estancia de 7 noches o más: –10%</li>
+    <li>Estancia de 14 noches o más: –15%</li>
+    <li>Oferta especial baja temporada: 3 noches al precio de 2</li>
+  </ul>
+
+  <h3>Condiciones</h3>
+  <ul>
+    <li>Reserva mínima: 2 noches en baja, 3 en alta</li>
+    <li>Reserva: 30% del importe total</li>
+    <li>Cancelación gratuita hasta 14 días antes</li>
+    <li>Entre 7 y 14 días: 50% de penalización sobre la señal</li>
+    <li>Menos de 7 días: se pierde la señal completa</li>
+    <li>No presentación: se cobra el total</li>
+  </ul>
+</div>
+
+	<div class="tarjeta-tarifa">
+  <h2 class="titulo-tarifa">Luna Menguante <span class="fase-lunar">🌘</span></h2>
+  <p><strong>Capacidad:</strong> 4 plazas</p>
+  <p><strong>Superficie:</strong> 90 m²</p>
+  <p>Ideal para parejas o familias pequeñas. Entrada independiente y terraza privada.</p>
+
+  <h3>Tarifas</h3>
+  <ul>
+    <li>Temporada baja: 80 €/noche</li>
+    <li>Temporada alta: 100 €/noche</li>
+    <li><em>(julio, agosto, Semana Santa, puentes y Navidad)</em></li>
+  </ul>
+
+  <h3>Descuentos</h3>
+  <ul>
+    <li>Estancia de 7 noches o más: –10%</li>
+    <li>Estancia de 14 noches o más: –15%</li>
+    <li>Oferta especial baja temporada: 3 noches al precio de 2 (excepto puentes)</li>
+  </ul>
+
+  <h3>Condiciones</h3>
+  <ul>
+    <li>Reserva mínima: 2 noches en baja, 3 en alta</li>
+    <li>Reserva: 30% del importe total</li>
+    <li>Cancelación gratuita hasta 14 días antes</li>
+    <li>Entre 7 y 14 días: 50% de penalización sobre la señal</li>
+    <li>Menos de 7 días: se pierde la señal completa</li>
+    <li>No presentación: se cobra el total</li>
+  </ul>
+</div>
+	
+		<div class="tarjeta-tarifa">
+  <h2 class="titulo-tarifa">Luna Creciente <span class="fase-lunar">🌒</span></h2>
+  <p><strong>Capacidad:</strong> 5 plazas</p>
+  <p><strong>Superficie:</strong> 110 m²</p>
+  <p>Ambiente acogedor con vistas al campo. Entrada privada y zona de barbacoa.</p>
+
+  <h3>Tarifas</h3>
+  <ul>
+    <li>Temporada baja: 120 €/noche</li>
+    <li>Temporada alta: 170 €/noche</li>
+    <li><em>(julio, agosto, Semana Santa, puentes y Navidad)</em></li>
+  </ul>
+
+  <h3>Descuentos</h3>
+  <ul>
+    <li>Estancia de 7 noches o más: –10%</li>
+    <li>Estancia de 14 noches o más: –15%</li>
+    <li>Oferta especial baja temporada: 3 noches al precio de 2</li>
+  </ul>
+
+  <h3>Condiciones</h3>
+  <ul>
+    <li>Reserva mínima: 2 noches en baja, 3 en alta</li>
+    <li>Reserva: 30% del importe total</li>
+    <li>Cancelación gratuita hasta 14 días antes</li>
+    <li>Entre 7 y 14 días: 50% de penalización sobre la señal</li>
+    <li>Menos de 7 días: se pierde la señal completa</li>
+    <li>No presentación: se cobra el total</li>
+  </ul>
+</div>
+	
+<section id="consulta-disponibilidad" class="tabla-tarifas consulta-formulario">
+  <h2 class="comparativa">Consulta de disponibilidad</h2>
+  <form action="https://formspree.io/f/xovkqgjl" method="POST">
+  <div class="fila-formulario">
+    <div class="campo">
+      <label for="nombre-consulta">Nombre:</label>
+      <input type="text" id="nombre-consulta" name="nombre" required>
+    </div>
+    <div class="campo">
+      <label for="email-consulta">Correo electrónico:</label>
+      <input type="email" id="email-consulta" name="email" required>
+    </div>
+  </div>
+
+  <div class="fila-formulario">
+    <div class="campo">
+      <label for="apartamento-consulta">Apartamento:</label>
+      <select id="apartamento-consulta" name="apartamento" required>
+        <option value="">Selecciona una opción</option>
+        <option value="llena">Luna Llena 🌕</option>
+        <option value="menguante">Luna Menguante 🌘</option>
+        <option value="creciente">Luna Creciente 🌒</option>
+      </select>
+    </div>
+    <div class="campo">
+      <label for="fecha-consulta">Fecha deseada:</label>
+      <input type="date" id="fecha-consulta" name="fecha" required>
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="mensaje-consulta">Mensaje adicional:</label>
+    <textarea id="mensaje-consulta" name="mensaje" rows="4" placeholder="¿Alguna preferencia o duda?"></textarea>
+  </div>
+
+  <input type="hidden" name="_redirect" value="https://tusitio.com/gracias-consulta.html">
+
+  <div class="boton-centro">
+	  <input type="hidden" name="_redirect" value="https://tusitio.com/gracias-consulta.html">
+    <button type="submit" class="btn-verde">Enviar consulta</button>
+  </div>
+</form>
+
+</section>
+
+
+</section>
+
+  <section class="tabla-tarifas">
+  <h2 class="comparativa">Comparativa de Tarifa</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="titulo-tarifa">Apartamento</th>
+        <th class="titulo-tarifa">Temporada baja</th>
+        <th class="titulo-tarifa">Temporada alta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Luna Llena</td>
+        <td>125 €/noche</td>
+        <td>175 €/noche</td>
+      </tr>
+      <tr>
+        <td>Luna Menguante</td>
+        <td>80 €/noche</td>
+        <td>100 €/noche</td>
+      </tr>
+      <tr>
+        <td>Luna Creciente</td>
+        <td>120 €/noche</td>
+        <td>170 €/noche</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+  <!-- Leyenda de temporadas -->
+<p class="leyenda-temporadas">
+  <strong>Temporada alta:</strong> julio, agosto, Semana Santa, puentes y Navidad<br>
+  <strong>Temporada baja:</strong> resto del año
+</p>
+
+<!-- Tabla de descuentos -->
+<section class="tabla-tarifas">
+  <h2 class="comparativa">Descuentos por duración de estancia</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="titulo-tarifa">Apartamento</th>
+        <th class="titulo-tarifa">+7 noches</th>
+        <th class="titulo-tarifa">+14 noches</th>
+        <th class="titulo-tarifa">Oferta especial</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Luna Llena</td>
+        <td>–10%</td>
+        <td>–15%</td>
+        <td>3 noches al precio de 2 (baja)</td>
+      </tr>
+      <tr>
+        <td>Luna Menguante</td>
+        <td>–10%</td>
+        <td>–15%</td>
+        <td>3 noches al precio de 2 (baja, excepto puentes)</td>
+      </tr>
+      <tr>
+        <td>Luna Creciente</td>
+        <td>–10%</td>
+        <td>–15%</td>
+        <td>3 noches al precio de 2 (baja)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+</main>
+	
+<section class="tabla-tarifas">
+  <h2 class="comparativa">Calcula tu tarifa</h2>
+
+ <form id="calculadora-tarifas">
+	 <p id="resultado-tarifa" style="margin-top: 1rem; font-weight: bold;"></p>
+
+<a id="btn-reserva" class="btn-reserva" style="display:none;" href="#">Reservar ahora</a>
+
+  <label for="apartamento">Apartamento:</label>
+  <select id="apartamento">
+    <option value="llena">Luna Llena</option>
+    <option value="menguante">Luna Menguante</option>
+    <option value="creciente">Luna Creciente</option>
+  </select>
+
+  <label for="entrada">Fecha de entrada:</label>
+  <input type="date" id="entrada">
+
+  <label for="salida">Fecha de salida:</label>
+  <input type="date" id="salida">
+
+  <label for="personas">Número de personas:</label>
+  <input type="number" id="personas" min="1" value="1">
+
+  <button type="button" onclick="calcularTarifa()">Calcular</button>
+</form>
+
+
+  <p id="resultado-tarifa" style="margin-top: 1rem; font-weight: bold;"></p>
+</section>
+	
+	<script>
+function enviarConsulta(event) {
+  event.preventDefault();
+
+  const nombre = document.getElementById("nombre-consulta").value;
+  const email = document.getElementById("email-consulta").value;
+  const apartamento = document.getElementById("apartamento-consulta").value;
+  const fecha = document.getElementById("fecha-consulta").value;
+
+  if (!nombre || !email || !apartamento || !fecha) {
+    alert("Por favor, completa todos los campos obligatorios.");
+    return;
+  }
+
+  alert(`Gracias, ${nombre}. Tu consulta sobre el apartamento "${apartamento}" ha sido enviada. Te responderemos a ${email}.`);
+}
+</script>
+
+
+	<script>
+function calcularTarifa() {
+  const apartamento = document.getElementById("apartamento").value;
+  const entrada = new Date(document.getElementById("entrada").value);
+  const salida = new Date(document.getElementById("salida").value);
+  const personas = parseInt(document.getElementById("personas").value);
+
+  const resultado = document.getElementById("resultado-tarifa");
+  const btnReserva = document.getElementById("btn-reserva");
+
+  if (isNaN(entrada) || isNaN(salida) || salida <= entrada || isNaN(personas) || personas < 1) {
+    resultado.textContent = "Por favor, completa todos los campos correctamente.";
+    btnReserva.style.display = "none";
+    return;
+  }
+
+  const noches = Math.ceil((salida - entrada) / (1000 * 60 * 60 * 24));
+  let temporada = "baja";
+
+  const altaMeses = [6, 7, 11]; // julio, agosto, diciembre
+  const altaFechas = ["2025-04-13", "2025-04-20", "2025-12-24", "2025-12-31"];
+
+  for (let d = new Date(entrada); d < salida; d.setDate(d.getDate() + 1)) {
+    const iso = d.toISOString().split("T")[0];
+    if (altaMeses.includes(d.getMonth()) || altaFechas.includes(iso)) {
+      temporada = "alta";
+      break;
+    }
+  }
+
+  let precioBase = 0;
+  let capacidad = 0;
+
+  if (apartamento === "llena") {
+    precioBase = temporada === "baja" ? 125 : 175;
+    capacidad = 6;
+  } else if (apartamento === "menguante") {
+    precioBase = temporada === "baja" ? 80 : 100;
+    capacidad = 4;
+  } else if (apartamento === "creciente") {
+    precioBase = temporada === "baja" ? 120 : 170;
+    capacidad = 6;
+  }
+
+  if (personas > capacidad) {
+    resultado.textContent = `Este apartamento tiene capacidad máxima de ${capacidad} personas.`;
+    btnReserva.style.display = "none";
+    return;
+  }
+
+  let total = precioBase * noches;
+
+  if (temporada === "baja") {
+    if (noches >= 14) {
+      total *= 0.85;
+    } else if (noches >= 7) {
+      total *= 0.90;
+    } else if (noches === 3) {
+      total = precioBase * 2;
+    }
+  }
+
+  const precioFinalNoche = total / noches;
+
+  resultado.textContent =
+    `Total estimado: ${total.toFixed(2)} € (${noches} noches en temporada ${temporada})\n` +
+    `Precio por noche con descuento: ${precioFinalNoche.toFixed(2)} €`;
+
+  const entradaStr = entrada.toISOString().split("T")[0];
+  const salidaStr = salida.toISOString().split("T")[0];
+
+  btnReserva.href = `reservas.html?apartamento=${apartamento}&entrada=${entradaStr}&salida=${salidaStr}&personas=${personas}`;
+  btnReserva.style.display = "inline-block";
+}
+</script>
+
+
+
+ <footer>
+  <div class="footer-contenido">
+    <p>&copy; 2025 Casa Luna – La Viliella. (Cangas de Narcea – Asturias)</p>
+    <p>
+      <a href="/webcasaluna/aviso-legal.html">Aviso legal</a> · 
+      <a href="/webcasaluna/privacidad.html">Privacidad</a>
+    </p>
+  </div>
+</footer>
+
+
+</body>
+</html>

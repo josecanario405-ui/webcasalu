@@ -1,0 +1,573 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Casa Luna - Inicio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: system-ui, sans-serif;
+      display: block;
+      color: #222;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    header {
+  position: relative;
+  height: 40vh;
+  min-height: 250px;
+  background: url('/webcasaluna/img/portada.jpg') center center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+    nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      z-index: 3;
+    }
+
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      background: rgba(255,255,255,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .logo-img {
+      height: 150px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #4CAF50;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 30px 40px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 10px;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+      text-align: center;
+    }
+
+    .hero-contenido h1 {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+	  color: white;
+    }
+
+    .hero-contenido p {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+	  color: white;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .retiro-cuadro {
+      background: #e3f2e1;
+      border-left: 6px solid #4CAF50;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 900px;
+      margin: 60px auto;
+    }
+
+    .retiro-cuadro h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .retiro-cuadro p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.95rem;
+    }
+
+    .footer-contenido {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .footer-contenido a {
+      color: white;
+      text-decoration: underline;
+      margin: 0 5px;
+      font-weight: 500;
+    }
+
+    .footer-contenido a:hover {
+      text-decoration: none;
+      color: #e0ffe0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo-link">
+        <img src="img/Logo1.png" alt="Casa Luna" class="logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="entorno.html">Entorno</a></li>
+        <li><a href="alojamiento.html">Alojamiento</a></li>
+        <li><a href="experiencias.html">Experiencias</a></li>
+        <li><a href="cursos.html">Cursos</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-contenido">
+      <h1 class="titulo-opiniones">Retiros</h1>
+      <p>Elige tu experiencia, nosotros la hacemos posible</p>
+    </div>
+  </header>
+	
+<main style="margin-top: 40px;">
+	<section class="retiro-cuadro">
+  <h2>Retiros en La Viliella</h2>
+  <p><strong>Introducción:</strong></p>
+  <p>
+    En La Viliella ofrecemos cursos y retiros de 3 días (viernes a domingo) enfocados en bienestar, desarrollo personal, nutrición y técnicas de sanación. Todos los programas están diseñados para grupos reducidos, lo que garantiza atención personalizada y una experiencia enriquecedora en un entorno natural y tranquilo.
+  </p>
+  <p>
+    Los cursos combinan clases prácticas, talleres, meditación, yoga y actividades al aire libre.
+  </p>
+</section>
+	<section class="retiro-cuadro">
+  <h2>Retiro Détox y Nutrición Saludable</h2>
+  <p><strong>Duración:</strong> 3 días (viernes a domingo)</p>
+  <p><strong>Descripción:</strong> Retiro para limpiar cuerpo y mente, mejorar hábitos alimentarios y aumentar la energía. Combina talleres de nutrición, yoga suave, meditación y caminatas conscientes.</p>
+
+  <p><strong>Contenido del curso:</strong></p>
+  <ul>
+    <li>Talleres de nutrición y hábitos saludables</li>
+    <li>Yoga suave y estiramientos</li>
+    <li>Meditación guiada y técnicas de relajación</li>
+    <li>Caminatas conscientes</li>
+  </ul>
+
+  <p><strong>Itinerario diario:</strong></p>
+  <ul>
+    <li><strong>Viernes</strong>
+      <ul>
+        <li>17:00 – 19:00: Llegada y registro</li>
+        <li>19:00 – 19:30: Presentación del retiro</li>
+        <li>19:30 – 20:30: Cena saludable</li>
+        <li>21:00 – 21:30: Meditación ligera</li>
+      </ul>
+    </li>
+    <li><strong>Sábado</strong>
+      <ul>
+        <li>07:30 – 08:30: Desayuno</li>
+        <li>09:00 – 11:00: Taller de nutrición consciente y hábitos saludables</li>
+        <li>11:00 – 13:00: Yoga suave</li>
+        <li>13:30 – 14:30: Comida detox</li>
+        <li>15:00 – 17:00: Caminata consciente por el entorno</li>
+        <li>17:00 – 19:00: Taller práctico de recetas saludables</li>
+        <li>19:30 – 20:30: Cena</li>
+        <li>21:00 – 21:30: Meditación de cierre</li>
+      </ul>
+    </li>
+    <li><strong>Domingo</strong>
+      <ul>
+        <li>07:30 – 08:30: Desayuno</li>
+        <li>09:00 – 11:00: Taller de hábitos de desintoxicación</li>
+        <li>11:00 – 13:00: Yoga suave y cierre grupal</li>
+        <li>13:30 – 14:30: Comida</li>
+        <li>16:00: Salida</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Precios por persona:</strong></p>
+  <ul>
+    <li>Doble con baño privado – 350 €</li>
+    <li>Doble estándar (baño compartido) – 320 €</li>
+    <li>Compartida (literas) – 280 €</li>
+  </ul>
+
+  <p><strong>El precio incluye:</strong></p>
+  <ul>
+    <li>Alojamiento completo en el tipo de habitación seleccionado durante los tres días del retiro</li>
+    <li>Pensión completa con desayuno, almuerzo, cena, tentempiés e infusiones</li>
+    <li>Todas las actividades programadas del curso</li>
+    <li>Materiales didácticos para talleres y ejercicios</li>
+    <li>Acceso a las instalaciones del centro</li>
+    <li>Seguros básicos de responsabilidad civil y accidentes</li>
+    <li>Certificado de asistencia personalizado</li>
+  </ul>
+
+  <p><strong>🏡 Tipos de Alojamiento:</strong></p>
+  <ul>
+    <li>Habitaciones dobles con baño privado: Espaciosas y cómodas, ideales para quienes buscan privacidad</li>
+    <li>Habitaciones dobles estándar: Con baño compartido, perfectas para compartir</li>
+    <li>Habitaciones compartidas (literas): Opción más económica para grupos</li>
+  </ul>
+  <p>Todas las habitaciones incluyen sábanas, toallas y productos de higiene personal.</p>
+
+  <p><strong>Información sobre Reservas y Cancelaciones:</strong></p>
+  <ul>
+    <li><strong>Reserva:</strong>
+      <ul>
+        <li>Anticipo del 30% al inscribirse</li>
+        <li>Métodos de pago: transferencia, tarjeta o Bizum</li>
+        <li>Confirmación por correo electrónico tras el pago</li>
+      </ul>
+    </li>
+    <li><strong>Cancelación:</strong>
+      <ul>
+        <li>Hasta 30 días antes: Reembolso del 100% (excepto anticipo)</li>
+        <li>Entre 15 y 30 días: Reembolso del 50% (excepto anticipo)</li>
+        <li>Menos de 15 días o no presentación: Sin reembolso</li>
+      </ul>
+    </li>
+    <li><strong>Consideraciones importantes:</strong>
+      <ul>
+        <li>Cambios de nombre permitidos sin coste</li>
+        <li>Cancelación por parte de La Viliella: reembolso completo o reprogramación</li>
+        <li>Recomendamos contratar seguro de cancelación</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<section class="retiro-cuadro">
+  <h2>Retiro de Yoga y Bienestar</h2>
+  <p><strong>Duración:</strong> 3 días (viernes a domingo)</p>
+  <p><strong>Descripción:</strong> Retiro centrado en yoga, meditación y técnicas de relajación. Ideal para todos los niveles, buscando equilibrio físico y mental.</p>
+
+  <p><strong>Contenido del curso:</strong></p>
+  <ul>
+    <li>Yoga adaptado a todos los niveles</li>
+    <li>Meditación y técnicas de respiración</li>
+    <li>Relajación y movilidad corporal</li>
+    <li>Caminatas al aire libre</li>
+  </ul>
+
+  <p><strong>Itinerario diario:</strong></p>
+  <ul>
+    <li><strong>Viernes</strong>
+      <ul>
+        <li>17:00 – 19:00: Llegada y registro</li>
+        <li>19:00 – 19:30: Presentación del retiro</li>
+        <li>19:30 – 20:30: Cena ligera</li>
+        <li>21:00 – 21:30: Meditación introductoria</li>
+      </ul>
+    </li>
+    <li><strong>Sábado</strong>
+      <ul>
+        <li>07:30 – 08:30: Desayuno</li>
+        <li>09:00 – 11:00: Yoga matutino</li>
+        <li>11:00 – 13:00: Taller de respiración y relajación</li>
+        <li>13:30 – 14:30: Comida saludable</li>
+        <li>15:00 – 17:00: Caminata consciente</li>
+        <li>17:00 – 19:00: Yoga terapéutico y estiramientos</li>
+        <li>19:30 – 20:30: Cena</li>
+        <li>21:00 – 21:30: Meditación de cierre</li>
+      </ul>
+    </li>
+    <li><strong>Domingo</strong>
+      <ul>
+        <li>07:30 – 08:30: Desayuno</li>
+        <li>09:00 – 11:00: Yoga dinámico</li>
+        <li>11:00 – 13:00: Reflexión y cierre grupal</li>
+        <li>13:30 – 14:30: Comida</li>
+        <li>16:00: Salida</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Precios por persona:</strong></p>
+  <ul>
+    <li>Doble con baño privado – 330 €</li>
+    <li>Doble estándar (baño compartido) – 300 €</li>
+    <li>Compartida (literas) – 270 €</li>
+  </ul>
+
+  <p><strong>El precio incluye:</strong></p>
+  <ul>
+    <li>Alojamiento completo durante los tres días del retiro</li>
+    <li>Pensión completa con desayuno, almuerzo, cena, tentempiés e infusiones</li>
+    <li>Todas las actividades programadas</li>
+    <li>Materiales didácticos para talleres y ejercicios</li>
+    <li>Acceso a las instalaciones del centro</li>
+    <li>Seguros básicos de responsabilidad civil y accidentes</li>
+    <li>Certificado de asistencia personalizado</li>
+  </ul>
+
+  <p><strong>Tipos de Alojamiento:</strong></p>
+  <ul>
+    <li>Habitaciones dobles con baño privado: Espaciosas y cómodas</li>
+    <li>Habitaciones dobles estándar: Con baño compartido</li>
+    <li>Habitaciones compartidas (literas): Opción más económica</li>
+  </ul>
+  <p>Todas las habitaciones incluyen sábanas, toallas y productos de higiene personal.</p>
+
+  <p><strong>Información sobre Reservas y Cancelaciones:</strong></p>
+  <ul>
+    <li><strong>Reserva:</strong>
+      <ul>
+        <li>Anticipo del 30% al inscribirse</li>
+        <li>Métodos de pago: transferencia, tarjeta o Bizum</li>
+        <li>Confirmación por correo electrónico tras el pago</li>
+      </ul>
+    </li>
+    <li><strong>Cancelación:</strong>
+      <ul>
+        <li>Hasta 30 días antes: Reembolso del 100% (excepto anticipo)</li>
+        <li>Entre 15 y 30 días: Reembolso del 50% (excepto anticipo)</li>
+        <li>Menos de 15 días o no presentación: Sin reembolso</li>
+      </ul>
+    </li>
+    <li><strong>Consideraciones importantes:</strong>
+      <ul>
+        <li>Cambios de nombre permitidos sin coste</li>
+        <li>Cancelación por parte de La Viliella: reembolso completo o reprogramación</li>
+        <li>Recomendamos contratar seguro de cancelación</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<section class="retiro-cuadro">
+  <h2>Retiro Mindfulness y Bienestar Emocional</h2>
+  <p><strong>Duración:</strong> 3 días (viernes a domingo)</p>
+  <p><strong>Descripción:</strong> Retiro enfocado en mindfulness y gestión emocional, reduciendo el estrés, mejorando la atención plena y fortaleciendo el equilibrio emocional.</p>
+
+  <p><strong>Contenido del curso:</strong></p>
+  <ul>
+    <li>Prácticas guiadas de mindfulness</li>
+    <li>Técnicas de gestión emocional</li>
+    <li>Meditación y relajación</li>
+    <li>Dinámicas grupales y ejercicios de integración</li>
+  </ul>
+
+  <p><strong>Itinerario diario:</strong></p>
+  <ul>
+    <li><strong>Viernes</strong>
+      <ul>
+        <li>17:00 – 19:00: Llegada y registro</li>
+        <li>19:00 – 19:30: Presentación y dinámica de grupo</li>
+        <li>19:30 – 20:30: Cena</li>
+        <li>21:00 – 21:30: Meditación introductoria</li>
+      </ul>
+    </li>
+    <li><strong>Sábado</strong>
+      <ul>
+        <li>07:30 – 08:30: Desayuno</li>
+        <li>09:00 – 11:00: Sesión de mindfulness</li>
+        <li>11:00 – 13:00: Taller de gestión emocional</li>
+        <li>13:30 – 14:30: Comida</li>
+        <li>15:00 – 17:00: Caminata consciente</li>
+        <li>17:00 – 19:00: Meditación y dinámicas grupales</li>
+        <li>19:30 – 20:30: Cena</li>
+        <li>21:00 – 21:30: Relajación guiada</li>
+      </ul>
+    </li>
+    <li><strong>Domingo</strong>
+      <ul>
+        <li>07:30 – 08:30: Desayuno</li>
+        <li>09:00 – 11:00: Integración de prácticas</li>
+        <li>11:00 – 13:00: Cierre grupal</li>
+        <li>13:30 – 14:30: Comida</li>
+        <li>16:00: Salida</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Precios por persona:</strong></p>
+  <ul>
+    <li>Doble con baño privado – 310 €</li>
+    <li>Doble estándar (baño compartido) – 280 €</li>
+    <li>Compartida (literas) – 250 €</li>
+  </ul>
+
+  <p><strong>El precio incluye:</strong></p>
+  <ul>
+    <li>Alojamiento completo durante los tres días del retiro</li>
+    <li>Pensión completa con desayuno, almuerzo, cena, tentempiés e infusiones</li>
+    <li>Todas las actividades programadas</li>
+    <li>Materiales didácticos para talleres y ejercicios</li>
+    <li>Acceso a las instalaciones del centro</li>
+    <li>Seguros básicos de responsabilidad civil y accidentes</li>
+    <li>Certificado de asistencia personalizado</li>
+  </ul>
+
+  <p><strong>Tipos de Alojamiento:</strong></p>
+  <ul>
+    <li>Habitaciones dobles con baño privado: Espaciosas y cómodas</li>
+    <li>Habitaciones dobles estándar: Con baño compartido</li>
+    <li>Habitaciones compartidas (literas): Opción más económica</li>
+  </ul>
+  <p>Todas las habitaciones incluyen sábanas, toallas y productos de higiene personal.</p>
+
+  <p><strong>Información sobre Reservas y Cancelaciones:</strong></p>
+  <ul>
+    <li><strong>Reserva:</strong>
+      <ul>
+        <li>Anticipo del 30% al inscribirse</li>
+        <li>Métodos de pago: transferencia, tarjeta o Bizum</li>
+        <li>Confirmación por correo electrónico tras el pago</li>
+      </ul>
+    </li>
+    <li><strong>Cancelación:</strong>
+      <ul>
+        <li>Hasta 30 días antes: Reembolso del 100% (excepto anticipo)</li>
+        <li>Entre 15 y 30 días: Reembolso del 50% (excepto anticipo)</li>
+        <li>Menos de 15 días o no presentación: Sin reembolso</li>
+      </ul>
+    </li>
+    <li><strong>Consideraciones importantes:</strong>
+      <ul>
+        <li>Cambios de nombre permitidos sin coste</li>
+        <li>Cancelación por parte de La Viliella: reembolso completo o reprogramación</li>
+        <li>Recomendamos contratar seguro de cancelación</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<section class="retiro-cuadro">
+  <h2>Información sobre Reservas y Cancelaciones</h2>
+
+  <p><strong>Reserva:</strong></p>
+  <ul>
+    <li>Anticipo requerido: 30% del precio total al momento de la inscripción</li>
+    <li>Métodos de pago: transferencia bancaria, tarjeta y Bizum</li>
+    <li>Confirmación de plaza por correo electrónico tras recibir el anticipo</li>
+  </ul>
+
+  <p><strong>Cancelación:</strong></p>
+  <ul>
+    <li>Hasta 30 días antes del inicio: Reembolso del 100% (excepto el anticipo)</li>
+    <li>Entre 15 y 30 días antes: Reembolso del 50% (excepto el anticipo)</li>
+    <li>Menos de 15 días o no presentación: No se realizará reembolso</li>
+  </ul>
+
+  <p><strong>Consideraciones importantes:</strong></p>
+  <ul>
+    <li>Cambios de nombre permitidos sin coste adicional, avisando con antelación</li>
+    <li>Cancelación por parte de La Viliella: reembolso completo o reprogramación</li>
+    <li>Recomendamos contratar un seguro de cancelación para proteger tu inversión</li>
+  </ul>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="reservas.html" style="display: inline-block; background-color: #4CAF50; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 10px;">Reservar ahora</a>
+    <a href="contacto.html" style="display: inline-block; background-color: #4CAF50; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 10px;">Solicitar más información</a>
+  </div>
+</section>
+
+	</main>
+	
+<footer>
+  <div class="footer-contenido">
+    <p>&copy; 2025 Casa Luna – La Viliella. (Cangas de Narcea – Asturias)</p>
+    <p>
+      <a href="aviso-legal.html">Aviso legal</a> · 
+      <a href="privacidad.html">Privacidad</a>
+    </p>
+  </div>
+</footer>
+
+
+	

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Luna - inicio</title>
+  <link rel="stylesheet" href="/webcasaluna/style.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, sans-serif; color: #222; }
+    img { max-width: 100%; display: block; }
+
+  header {
+  position: relative;
+  height: 40vh;
+  min-height: 250px;
+  background: url('/webcasaluna/img/portada.jpg') center center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.hero-contenido {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-contenido h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.hero-contenido p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+    nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      z-index: 3;
+    }
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      background: rgba(255,255,255,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .logo-img { height: 150px; }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
+    .nav-links li a:hover { color: #4CAF50; }
+    .nav-links li a:hover::after { width: 100%; }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 20px 30px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 10px;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+    }
+    .hero-contenido h1 { font-size: 2.4rem; margin-bottom: 8px; }
+    .hero-contenido p { font-size: 1.1rem; margin-bottom: 16px; }
+    .btn {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: #fff;
+      padding: 12px 24px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
+      transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, #45a049, #3e8e41);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    .btn:active { transform: translateY(1px); }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .info-grid {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .info-bloque {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .info-bloque:nth-child(1) { animation-delay: 0.2s; }
+    .info-bloque:nth-child(2) { animation-delay: 0.4s; }
+    .info-bloque:nth-child(3) { animation-delay: 0.6s; }
+    .info-bloque:nth-child(4) { animation-delay: 0.8s; }
+    .info-bloque h2 { font-size: 1.5rem; margin-bottom: 15px; color: #4CAF50; }
+    .info-bloque p, .info-bloque ul { line-height: 1.6; margin: 0; }
+    .info-bloque ul { padding-left: 20px; }
+	  
+	    /* Aquí va todo el CSS que ya compartiste */
+    /* ... (puedes mantenerlo como está) ... */
+
+    .formulario-contacto {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f1f1f1;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .formulario-contacto label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .formulario-contacto input,
+    .formulario-contacto textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .formulario-contacto button {
+      background: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .formulario-contacto button:hover {
+      background: #45a049;
+    }
+	.bloque-verde {
+  background-color: #f1f8e9;
+  border-left: 4px solid #4CAF50;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+
+.titulo-tarifa {
+  color: #4CAF50;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.formulario-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-contacto label {
+  font-weight: bold;
+  color: #333;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.btn-verde {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-top: 20px;
+}
+
+.btn-verde:hover {
+  background-color: #388E3C;
+}
+
+.btn-verde:active {
+  transform: translateY(1px);
+}
+
+
+ footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-contenido {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-contenido a {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+  font-weight: 500;
+}
+
+.footer-contenido a:hover {
+  text-decoration: none;
+  color: #e0ffe0;
+}
+
+
+    }
+	  button[type="submit"] {
+  display: block;
+  margin-top: 20px;
+  background: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+	  .btn-whatsapp {
+  display: inline-block;
+  margin-top: 20px;
+  background: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}
+.pagina-contacto .menu-movil {
+  display: none !important;
+}
+	  .menu-toggle {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #4CAF50; /* o el color que prefieras */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+  }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/webcasaluna/index.html" class="logo-link">
+      <img src="/webcasaluna/img/Logo1.png" alt="Casa Luna" class="logo-img">
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="/webcasaluna/index.html">Inicio</a></li>
+      <li><a href="/webcasaluna/sobrenosotros.html">Sobre Nosotros</a></li>
+      <li><a href="/webcasaluna/entorno.html">Entorno</a></li>
+      <li><a href="/webcasaluna/alojamiento.html">Alojamiento</a></li>
+      <li><a href="/webcasaluna/experiencias.html">Experiencias</a></li>
+      <li><a href="/webcasaluna/cursos.html">Cursos</a></li>
+      <li><a href="/webcasaluna/galeria.html">Galería</a></li>
+      <li><a href="/webcasaluna/reservas.html">Reservas</a></li>
+      <li><a href="/webcasaluna/contacto.html">Contacto</a></li>
+      <li><a href="/webcasaluna/ubicacion.html">Ubicación</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-contenido">
+    <h1>Contacto</h1>
+    <p>Estamos aquí para escucharte</p>
+  </div>
+</header>
+
+
+
+<main>
+  <section class="bloque-verde">
+    <h2 class="titulo-tarifa">📬 Contacta con nosotros</h2>
+    <p style="text-align:center;">¿Tienes alguna duda, consulta o quieres reservar directamente? Rellena el formulario y te responderemos lo antes posible.</p>
+
+    <form action="enviar-contacto.php" method="post" class="formulario-contacto">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" required>
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="mensaje">Mensaje:</label>
+      <textarea name="mensaje" id="mensaje" rows="5" required></textarea>
+
+      <button type="submit" class="btn-verde">Solicitar información</button>
+    </form>
+
+    <div class="info-contacto">
+      <p><strong>Teléfono:</strong> <a href="tel:+34626624771">+34 626 624 771</a></p>
+      <p><strong>Correo:</strong> <a href="mailto:isabelmasaje72@gmail.com">isabelmasaje72@gmail.com</a></p>
+      <p><strong>Horario:</strong> Lunes a domingo, 9:00–22:00</p>
+    </div>
+
+    <a href="https://wa.me/34626624771" target="_blank" class="btn-verde">Contactar por WhatsApp</a>
+  </section>
+</main>
+
+
+<footer>
+  <div class="footer-contenido">
+    <p>&copy; 2025 Casa Luna – La Viliella. (Cangas de Narcea – Asturias)</p>
+    <p>
+      <a href="/webcasaluna/aviso-legal.html">Aviso legal</a> · 
+      <a href="/webcasaluna/privacidad.html">Privacidad</a>
+    </p>
+  </div>
+</footer>
+
+
+</body>
+</html>
+

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Luna - Reservas</title>
+  <link rel="stylesheet" href="/webcasaluna/style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      color: #222;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+   header {
+  position: relative;
+  height: 40vh;
+  min-height: 250px;
+  background: url('/webcasaluna/img/portada.jpg') center center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.hero-contenido {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-contenido h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.hero-contenido p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+
+    nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      z-index: 3;
+    }
+
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      background: rgba(255,255,255,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .logo-img { height: 150px; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover { color: #4CAF50; }
+    .nav-links li a:hover::after { width: 100%; }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 20px 30px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 10px;
+    }
+
+    .hero-contenido h1 { font-size: 2.4rem; margin-bottom: 8px; }
+    .hero-contenido p { font-size: 1.1rem; margin-bottom: 16px; }
+
+    main {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+  .reservas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.bloque-verde {
+  background: #f1f8e9;
+  border-left: 4px solid #4CAF50;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.titulo-tarifa {
+  color: #4CAF50;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.formulario-contacto {
+  display: grid;
+  gap: 20px;
+}
+
+.formulario-contacto label {
+  font-weight: 600;
+  color: #333;
+}
+
+.formulario-contacto input,
+.formulario-contacto select,
+.formulario-contacto textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.btn-verde {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-verde:hover {
+  background: #45a049;
+}
+
+    label {
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .btn-reserva {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-reserva:hover {
+      background-color: #388E3C;
+    }
+.bloque-verde {
+  background-color: #f1f8e9; /* ✅ Este es el color correcto */
+  border-left: 4px solid #4CAF50;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin: 40px auto;
+  max-width: 800px;
+}
+	  .reservas-doble {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.bloque-verde {
+  background-color: #f1f8e9;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex: 1 1 500px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
+label {
+  font-weight: 600;
+}
+
+input, select, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn-reserva {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-reserva:hover {
+  background-color: #388E3C;
+}
+
+.titulo-tarifa {
+  color: #4CAF50;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem; /* antes era 10px */
+  text-align: center;
+}
+.tarjeta-tarifa {
+  padding: 1rem;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  background-color: #f9fff9;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem; /* más compacto */
+}
+
+.tarjeta-tarifa h2 {
+  margin: 0; /* elimina margen superior e inferior */
+  font-size: 1.4rem;
+  color: #4CAF50;
+}
+
+.tarjeta-tarifa p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.tarjeta-tarifa ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+
+.formulario-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-contacto label {
+  font-weight: bold;
+  color: #333;
+}
+
+.formulario-contacto input,
+.formulario-contacto select,
+.formulario-contacto textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.btn-verde {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-top: 20px;
+}
+
+.btn-verde:hover {
+  background-color: #388E3C;
+}
+
+.btn-verde:active {
+  transform: translateY(1px);
+}
+	  .reservas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.reservas-grid .bloque-verde {
+  flex: 1 1 500px;
+}
+
+
+
+footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-contenido {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-contenido a {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+  font-weight: 500;
+}
+
+.footer-contenido a:hover {
+  text-decoration: none;
+  color: #e0ffe0;
+}
+
+	  .pagina-reservas .menu-toggle {
+  display: none !important;
+}
+  </style>
+</head>
+
+	<body class="pagina-reservas">
+ <header>
+  <nav>
+    <a href="/webcasaluna/index.html" class="logo-link">
+      <img src="/webcasaluna/img/Logo1.png" alt="Casa Luna" class="logo-img">
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links">
+      <li><a href="/webcasaluna/index.html">Inicio</a></li>
+      <li><a href="/webcasaluna/sobrenosotros.html">Sobre Nosotros</a></li>
+      <li><a href="/webcasaluna/entorno.html">Entorno</a></li>
+      <li><a href="/webcasaluna/alojamiento.html">Alojamiento</a></li>
+      <li><a href="/webcasaluna/experiencias.html">Experiencias</a></li>
+      <li><a href="/webcasaluna/cursos.html">Cursos</a></li>
+      <li><a href="/webcasaluna/galeria.html">Galería</a></li>
+      <li><a href="/webcasaluna/reservas.html">Reservas</a></li>
+      <li><a href="/webcasaluna/contacto.html">Contacto</a></li>
+      <li><a href="/webcasaluna/ubicacion.html">Ubicación</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-contenido">
+    <h1>Reservas</h1>
+    <p>Tu escapada rural empieza aquí</p>
+  </div>
+</header>
+
+
+ <main>
+  <section class="reservas-doble">
+    <!-- Bloque de Actividades -->
+    <section class="bloque-verde">
+      <h2 class="titulo-tarifa">🎓 Reservas de Actividades</h2>
+
+      <form action="https://formsubmit.co/isabelmasaje72@gmail.com" method="POST" class="formulario-contacto">
+        <input type="hidden" name="_subject" value="Reserva de actividad desde la web">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://sensational-yeot-a32d30.netlify.app/gracias.html">
+
+        <label for="tipo">Tipo de actividad:</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Selecciona una opción</option>
+          <option value="curso">Curso</option>
+          <option value="retiro">Retiro</option>
+          <option value="taller">Taller</option>
+        </select>
+
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <div id="bloque-curso" style="display:none;">
+          <label for="curso">Curso:</label>
+          <select id="curso" name="curso">
+            <option value="">Selecciona un curso</option>
+            <option value="bienestar">Bienestar</option>
+            <option value="naturaleza">Naturaleza</option>
+            <option value="vida-consciente">Vida Consciente</option>
+            <option value="masaje">Masaje Relajante</option>
+          </select>
+          <label for="fecha-curso">Fecha:</label>
+          <input type="date" id="fecha-curso" name="fecha_curso">
+        </div>
+
+        <div id="bloque-retiro" style="display:none;">
+          <label for="retiro">Retiro:</label>
+          <select id="retiro" name="retiro">
+            <option value="">Selecciona un retiro</option>
+            <option value="otoño">Retiro de Otoño</option>
+            <option value="invierno">Retiro de Invierno</option>
+          </select>
+          <label for="fecha-retiro">Fecha:</label>
+          <input type="date" id="fecha-retiro" name="fecha_retiro">
+        </div>
+
+        <div id="bloque-taller" style="display:none;">
+          <label for="taller">Taller:</label>
+          <select id="taller" name="taller">
+            <option value="">Selecciona un taller</option>
+            <option value="historia-leyendas">Historia y Leyendas</option>
+            <option value="observacion-estrellas">Observación de Estrellas</option>
+            <option value="pack-familia">Pack Familia</option>
+            <option value="pack-grupo">Pack Grupo</option>
+          </select>
+          <label for="fecha-taller">Fecha:</label>
+          <input type="date" id="fecha-taller" name="fecha_taller">
+          <label for="participantes">Número de participantes:</label>
+          <input type="number" id="participantes" name="participantes" min="1">
+        </div>
+
+        <label for="mensaje">Mensaje adicional:</label>
+        <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+
+        <button type="submit" class="btn-verde">Enviar reserva</button>
+      </form>
+    </section>
+
+    <!-- Bloque de Apartamentos -->
+  <section class="bloque-verde">
+  <h2 class="titulo-tarifa">🏡 Reservas de Apartamentos</h2>
+
+  <form action="https://formsubmit.co/isabelmasaje72@gmail.com" method="POST" class="formulario-contacto">
+    <input type="hidden" name="_subject" value="Reserva de apartamento desde la web">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://sensational-yeot-a32d30.netlify.app/gracias.html">
+
+    <label for="nombre-apto">Nombre completo:</label>
+    <input type="text" id="nombre-apto" name="nombre" required>
+
+    <label for="email-apto">Correo electrónico:</label>
+    <input type="email" id="email-apto" name="email" required>
+
+    <label for="apartamento">Apartamento:</label>
+    <select id="apartamento" name="apartamento" required>
+      <option value="">Selecciona un apartamento</option>
+      <option value="luna-llena">Luna Llena</option>
+      <option value="luna-creciente">Luna Creciente</option>
+      <option value="luna-menguante">Luna Menguante</option>
+    </select>
+
+    <label for="fecha-entrada">Fecha de entrada:</label>
+    <input type="date" id="fecha-entrada" name="fecha_entrada" required>
+
+    <label for="fecha-salida">Fecha de salida:</label>
+    <input type="date" id="fecha-salida" name="fecha_salida" required>
+
+    <label for="personas">Número de personas:</label>
+    <input type="number" id="personas" name="personas" min="1" required>
+
+    <p id="resultado">Total: —</p>
+
+    <label for="mensaje-apto">Mensaje adicional:</label>
+    <textarea id="mensaje-apto" name="mensaje" rows="4"></textarea>
+
+    <button type="submit" class="btn-verde">Reservar apartamento</button>
+  </form>
+</section>
+
+</main>
+
+		
+		<script>
+// 🔹 Mostrar bloques según tipo seleccionado (curso, retiro, taller)
+const tipoSelect = document.getElementById('tipo');
+const bloqueCurso = document.getElementById('bloque-curso');
+const bloqueRetiro = document.getElementById('bloque-retiro');
+const bloqueTaller = document.getElementById('bloque-taller');
+
+if (tipoSelect) {
+  tipoSelect.addEventListener('change', function () {
+    bloqueCurso.style.display = 'none';
+    bloqueRetiro.style.display = 'none';
+    bloqueTaller.style.display = 'none';
+
+    if (this.value === 'curso') bloqueCurso.style.display = 'block';
+    if (this.value === 'retiro') bloqueRetiro.style.display = 'block';
+    if (this.value === 'taller') bloqueTaller.style.display = 'block';
+  });
+}
+
+// 🔹 Precargar datos desde la calculadora de apartamentos
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+
+  const apto = params.get("apartamento");
+  const entrada = params.get("entrada");
+  const salida = params.get("salida");
+  const personas = params.get("personas");
+
+  const apartamento = document.getElementById("apartamento");
+  const fechaEntrada = document.getElementById("fecha-entrada");
+  const fechaSalida = document.getElementById("fecha-salida");
+  const personasInput = document.getElementById("personas");
+  const resultado = document.getElementById("resultado");
+
+  if (apto && apartamento) {
+    apartamento.value = `luna-${apto}`;
+  }
+  if (entrada && fechaEntrada) {
+    fechaEntrada.value = entrada;
+  }
+  if (salida && fechaSalida) {
+    fechaSalida.value = salida;
+  }
+  if (personas && personasInput) {
+    personasInput.value = personas;
+  }
+
+  // Calcular total estimado con descuentos
+  const entradaDate = new Date(entrada);
+  const salidaDate = new Date(salida);
+  const noches = Math.ceil((salidaDate - entradaDate) / (1000 * 60 * 60 * 24));
+
+  let precioBase = 0;
+  if (apto === "llena") precioBase = 125;
+  else if (apto === "menguante") precioBase = 80;
+  else if (apto === "creciente") precioBase = 120;
+
+  let total = precioBase * noches;
+
+  if (noches >= 14) total *= 0.85;
+  else if (noches >= 7) total *= 0.90;
+  else if (noches === 3) total = precioBase * 2;
+
+  if (!isNaN(total) && resultado) {
+    resultado.textContent = `Total estimado: ${total.toFixed(2)} € (${noches} noches con descuento aplicado)`;
+  }
+});
+</script>
+
+
+
+<!-- Footer -->
+<footer>
+  <div class="footer-contenido">
+    <p>&copy; 2025 Casa Luna – La Viliella. (Cangas de Narcea – Asturias)</p>
+    <p>
+      <a href="/webcasaluna/aviso-legal.html">Aviso legal</a> · 
+      <a href="/webcasaluna/privacidad.html">Privacidad</a>
+    </p>
+  </div>
+</footer>
+

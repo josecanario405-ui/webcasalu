@@ -1,0 +1,589 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Talleres</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+  <title>Casa Luna - Inicio</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, sans-serif; color: #222; }
+    img { max-width: 100%; display: block; }
+
+    header {
+      position: relative;
+      min-height: 60vh;
+      background: url('img/portada.jpg') center center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+	  	  header {
+  height: 40vh;
+  min-height: 250px;
+}
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+      z-index: 1;
+    }
+
+    nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      z-index: 3;
+    }
+    .logo-link {
+      position: absolute;
+      left: 20px;
+      background: rgba(255,255,255,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .logo-img { height: 150px; }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #4CAF50;
+      transition: width 0.3s ease;
+    }
+    .nav-links li a:hover { color: #4CAF50; }
+    .nav-links li a:hover::after { width: 100%; }
+
+     .hero-contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 30px 40px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 10px;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+      text-align: center;
+    }
+
+    .hero-contenido h1 {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+	  color: white;
+    }
+
+    .hero-contenido p {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+	  color: white;
+    }
+
+    .hero-contenido h1 { font-size: 2.4rem; margin-bottom: 8px; }
+    .hero-contenido p { font-size: 1.1rem; margin-bottom: 16px; }
+    .btn {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: #fff;
+      padding: 12px 24px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
+      transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, #45a049, #3e8e41);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    .btn:active { transform: translateY(1px); }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .info-grid {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .info-bloque {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .info-bloque:nth-child(1) { animation-delay: 0.2s; }
+    .info-bloque:nth-child(2) { animation-delay: 0.4s; }
+    .info-bloque:nth-child(3) { animation-delay: 0.6s; }
+    .info-bloque:nth-child(4) { animation-delay: 0.8s; }
+    .info-bloque h2 { font-size: 1.5rem; margin-bottom: 15px; color: #4CAF50; }
+    .info-bloque p, .info-bloque ul { line-height: 1.6; margin: 0; }
+    .info-bloque ul { padding-left: 20px; }
+	  }
+
+  
+    @media (max-width: 768px) {
+      .info-grid {
+        display: block;
+        padding: 20px;
+      }
+
+    }
+	   main {
+      flex: 1;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: #4a7c59;
+    }
+
+    .form-opinion {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 60px;
+    }
+
+    .form-opinion label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-opinion input,
+    .form-opinion textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    .form-opinion textarea {
+      resize: vertical;
+    }
+
+    .form-opinion button {
+      background-color: #4a7c59;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      align-self: flex-start;
+    }
+
+    .form-opinion button:hover {
+      background-color: #3b6648;
+    }
+
+	.titulo-tarifa {
+  color: #fff;
+}
+	  .form-opinion {
+  background: #e3f2e1;
+  border-left: 6px solid #4CAF50;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 30px;
+  max-width: 700px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-opinion label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-opinion input,
+.form-opinion textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.form-opinion button {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: #fff;
+  padding: 12px 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.form-opinion button:hover {
+  background: linear-gradient(135deg, #45a049, #3e8e41);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.form-opinion button:active {
+  transform: translateY(1px);
+}
+
+.contenedor-opiniones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.retiro-cuadro {
+  background: #e3f2e1;
+  border-left: 6px solid #4CAF50;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 30px;
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: left; /* ← aquí está la clave */
+}
+
+
+.retiro-cuadro h2 {
+  text-align: left;
+  color: #4CAF50;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.retiro-cuadro ul {
+  padding-left: 20px;
+  line-height: 1.6;
+}
+	  .botones-centro {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.boton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.boton:hover {
+  background-color: #388E3C;
+}
+	  .botones-centro {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.boton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.boton:hover {
+  background-color: #388E3C;
+}
+
+
+	    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.95rem;
+    }
+
+    .footer-contenido {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .footer-contenido a {
+      color: white;
+      text-decoration: underline;
+      margin: 0 5px;
+      font-weight: 500;
+    }
+
+    .footer-contenido a:hover {
+      text-decoration: none;
+      color: #e0ffe0;
+    }
+
+  </style>
+</head>
+<body>
+	
+ 
+<header>
+  <nav>
+    <a href="index.html" class="logo-link">
+      <img src="img/Logo1.png" alt="Casa Luna" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="sobre nosotros.html">Sobre Nosotros</a></li>
+      <li><a href="entorno.html">Entorno</a></li>
+      <li><a href="alojamiento.html">Alojamiento</a></li>
+      <li><a href="experiencias.html">Experiencias</a></li>
+	  <li><a href="cursos.html">Cursos</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="reservas.html">Reservas</a></li>
+	  <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="ubicacion.html">Ubicación</a></li>
+    </ul>
+  </nav>
+
+    <div class="hero-contenido">
+    <h1 class="titulo-opiniones">Talleres</h1>
+    <p>Elige tu experiencia, nosotros la hacemos posible</p>
+  </div>
+</header>
+
+	
+	<main>
+  <!-- Introducción -->
+  <section class="retiro-cuadro">
+  <h2>Talleres de un día en La Viliella</h2>
+  <p>Disfruta de experiencias formativas únicas en plena naturaleza. Cada taller está diseñado para aprender de forma práctica y amena, aprovechar el entorno natural y desconectar del día a día. Los talleres se realizan en nuestros apartamentos y jardín, con todo lo necesario para tu comodidad.</p>
+</section>
+
+  <!-- Primer taller -->
+  <section class="retiro-cuadro">
+  <h2>Taller de Fotografía en la Naturaleza</h2>
+
+  <p><strong>Duración:</strong> 4 horas (mañana de 10:00 a 14:00)</p>
+  <p><strong>Descripción:</strong> Un taller práctico para aprender a capturar la belleza del entorno natural de La Viliella. Ideal para amantes de la fotografía, tanto principiantes como aficionados con móvil o cámara réflex.</p>
+
+  <p><strong>Contenido:</strong></p>
+  <ul>
+    <li>Introducción a la fotografía de paisajes y fauna</li>
+    <li>Técnicas de luz y composición</li>
+    <li>Uso básico de cámara réflex o móvil avanzado</li>
+    <li>Práctica guiada en entornos naturales de La Viliella</li>
+  </ul>
+
+  <p><strong>Precio:</strong> 35 € por persona (mínimo 4 participantes)</p>
+</section>
+
+		<section class="retiro-cuadro">
+  <h2>Taller de Alfarería Tradicional</h2>
+
+  <p><strong>Duración:</strong> 4 horas (mañana o tarde según disponibilidad)</p>
+  <p><strong>Descripción:</strong> Un taller artesanal para descubrir la tradición alfarera asturiana y crear tu propia pieza en barro. Ideal para quienes desean conectar con la tierra, aprender técnicas básicas y llevarse una experiencia creativa y tangible.</p>
+
+  <p><strong>Contenido:</strong></p>
+  <ul>
+    <li>Historia de la alfarería asturiana</li>
+    <li>Técnicas básicas de modelado y esmaltado de piezas sencillas</li>
+    <li>Cada participante se lleva su creación</li>
+  </ul>
+
+  <p><strong>Precio:</strong> 50 € por persona (mínimo 6 participantes)</p>
+</section>
+
+		<section class="retiro-cuadro">
+  <h2>Taller de Construcción de Muros de Piedra Seca</h2>
+
+  <p><strong>Duración:</strong> 4 horas (10:00 a 14:00)</p>
+  <p><strong>Descripción:</strong> Un taller práctico y al aire libre para aprender a construir muros de piedra seca siguiendo técnicas tradicionales. Ideal para quienes desean reconectar con la arquitectura rural, trabajar con las manos y contribuir al paisaje de forma sostenible.</p>
+
+  <p><strong>Contenido:</strong></p>
+  <ul>
+    <li>Origen y técnicas tradicionales de la piedra seca</li>
+    <li>Seguridad y uso de herramientas</li>
+    <li>Construcción práctica de un pequeño tramo de muro</li>
+  </ul>
+
+  <p><strong>Precio:</strong> 40 € por persona (mínimo 4 participantes)</p>
+</section>
+
+		<section class="retiro-cuadro">
+  <h2>Taller de Observación de Aves</h2>
+
+  <p><strong>Duración:</strong> 4 horas (10:00 a 14:00)</p>
+  <p><strong>Descripción:</strong> Un taller para adentrarse en el mundo de la ornitología local y aprender a identificar aves por su canto y aspecto. Ideal para amantes de la naturaleza que desean mejorar su capacidad de observación y disfrutar de un paseo guiado por los paisajes de La Viliella.</p>
+
+  <p><strong>Contenido:</strong></p>
+  <ul>
+    <li>Introducción a la ornitología local</li>
+    <li>Reconocimiento visual y auditivo de especies</li>
+    <li>Paseo guiado por bosques y prados de La Viliella</li>
+  </ul>
+
+  <p><strong>Precio:</strong> 30 € por persona (mínimo 4 participantes)</p>
+</section>
+
+		<section class="retiro-cuadro">
+  <h2>Taller de Observación de Aves</h2>
+
+  <p><strong>Duración:</strong> 4 horas (10:00 a 14:00)</p>
+  <p><strong>Descripción:</strong> Un taller para adentrarse en el mundo de la ornitología local y aprender a identificar aves por su canto y aspecto. Ideal para amantes de la naturaleza que desean mejorar su capacidad de observación y disfrutar de un paseo guiado por los paisajes de La Viliella.</p>
+
+  <p><strong>Contenido:</strong></p>
+  <ul>
+    <li>Introducción a la ornitología local</li>
+    <li>Reconocimiento visual y auditivo de especies</li>
+    <li>Paseo guiado por bosques y prados de La Viliella</li>
+  </ul>
+
+  <p><strong>Precio:</strong> 30 € por persona (mínimo 4 participantes)</p>
+</section>
+
+		<section class="retiro-cuadro">
+  <h2>Taller de Mindfulness en la Naturaleza</h2>
+
+  <p><strong>Duración:</strong> 4 horas (mañana de 9:00 a 13:00)</p>
+  <p><strong>Descripción:</strong> Un taller para cultivar la atención plena en contacto directo con el entorno natural. Ideal para quienes buscan reducir el estrés, mejorar su bienestar emocional y reconectar con el presente a través de prácticas sencillas y efectivas.</p>
+
+  <p><strong>Contenido:</strong></p>
+  <ul>
+    <li>Ejercicios de respiración y atención plena</li>
+    <li>Caminata consciente por el bosque</li>
+    <li>Técnicas de relajación guiada</li>
+  </ul>
+
+  <p><strong>Precio:</strong> 30 € por persona (mínimo 4 participantes)</p>
+</section>
+
+		<section class="retiro-cuadro">
+  <h2>Taller de Historia y Leyendas de La Viliella</h2>
+
+  <p><strong>Duración:</strong> 4 horas (tarde de 16:00 a 20:00)</p>
+  <p><strong>Descripción:</strong> Un taller para descubrir el pasado y las historias que han dado forma a La Viliella. Ideal para quienes disfrutan de la tradición oral, la historia local y los paseos con encanto por el pueblo.</p>
+
+  <p><strong>Contenido:</strong></p>
+  <ul>
+    <li>Relatos y leyendas locales transmitidas de generación en generación</li>
+    <li>Paseo guiado por el pueblo para contextualizar</li>
+  </ul>
+
+  <p><strong>Precio:</strong> 25 € por persona (mínimo 6 participantes)</p>
+</section>
+
+		<section class="retiro-cuadro">
+  <h2>Taller de Observación de Estrellas</h2>
+
+  <p><strong>Duración:</strong> 4 horas (21:30 a 01:30)</p>
+  <p><strong>Descripción:</strong> Un taller nocturno para explorar el cielo estrellado de La Viliella, aprender astronomía básica y disfrutar de relatos mitológicos bajo las constelaciones. Ideal para quienes buscan una experiencia mágica y educativa en plena naturaleza.</p>
+
+  <p><strong>Contenido:</strong></p>
+  <ul>
+    <li>Introducción a astronomía básica</li>
+    <li>Reconocimiento de constelaciones y uso de telescopio</li>
+    <li>Relatos mitológicos vinculados al cielo nocturno</li>
+  </ul>
+
+  <p><strong>Precio:</strong> 40 € por persona (mínimo 4 participantes)</p>
+</section>
+
+		<section class="retiro-cuadro">
+  <h2>Packs para familias o grupos reducidos</h2>
+
+  <p><strong>Pack Familia:</strong> 140 € (incluye 2 talleres a elegir para 2 adultos + 2 niños)</p>
+  <p><strong>Pack Grupo:</strong> 10% de descuento en todos los talleres para grupos de 6 o más personas</p>
+</section>
+
+<section class="retiro-cuadro">
+  <h2>Información sobre Reservas y Cancelaciones</h2>
+
+  <h3>Reserva</h3>
+  <ul>
+    <li><strong>Anticipo requerido:</strong> Para confirmar tu plaza, es necesario abonar un anticipo del 30% del precio total al momento de la inscripción.</li>
+    <li><strong>Métodos de pago:</strong> Aceptamos transferencias bancarias, pagos con tarjeta y Bizum.</li>
+    <li><strong>Confirmación de plaza:</strong> Una vez recibido el anticipo, te enviaremos una confirmación por correo electrónico con todos los detalles del retiro.</li>
+  </ul>
+
+  <h3>Cancelación</h3>
+  <ul>
+    <li><strong>Hasta 30 días antes del inicio:</strong> Reembolso del 100% del importe abonado, excepto el anticipo.</li>
+    <li><strong>Entre 15 y 30 días antes:</strong> Reembolso del 50% del importe abonado, excepto el anticipo.</li>
+    <li><strong>Menos de 15 días antes o no presentación:</strong> No se realizará reembolso.</li>
+  </ul>
+
+  <h3>Consideraciones Importantes</h3>
+  <ul>
+    <li><strong>Cambios de nombre:</strong> Si no puedes asistir, puedes ceder tu plaza a otra persona sin coste adicional, siempre que nos informes con antelación.</li>
+    <li><strong>Cancelación por parte de La Viliella:</strong> En caso de que el retiro no se realice por falta de quorum o fuerza mayor, se ofrecerá un reembolso completo o la opción de reprogramar tu plaza para otro retiro.</li>
+    <li><strong>Seguro de cancelación:</strong> Recomendamos contratar un seguro de cancelación para proteger tu inversión en caso de imprevistos personales.</li>
+  </ul>
+
+ <div class="botones-centro">
+ <a href="reservas.html" class="boton">Reservar ahora</a>
+  <a href="/webcasaluna/contacto.html" class="boton">Solicitar más información</a>
+</div>
+</section>
+</main>
+	
+	<footer>
+  <div class="footer-contenido">
+    <p>&copy; 2025 Casa Luna – La Viliella. (Cangas de Narcea – Asturias)</p>
+    <p>
+      <a href="aviso-legal.html">Aviso legal</a> · 
+      <a href="privacidad.html">Privacidad</a>
+    </p>
+  </div>
+</footer>
+
